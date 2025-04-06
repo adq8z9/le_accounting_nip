@@ -13,11 +13,12 @@ Format of General Ledger Entry Event -
   "kind": 8001, //
   "tags": [
       ["accounting_area", <32-bytes lowercase hex-encoded id of the accounting area structure kind 1 event reference below for which is booked>],
-      ["movement_type", <64-bit integer for movement type defined in the further implementation notes>],
+      ["je_movement_type", <64-bit integer for movement type defined in the further implementation notes>],
       ["subledger_reference", <32-bytes lowercase hex-encoded id of a subledger reference posting>, <kind number of referenced subledger posting>],
-      ["posting_partner", <32-bytes lowercase hex-encoded id of the accounting area structure kind 1 event reference who is the partner of the transaction>],
+      ["je_posting_partner", <32-bytes lowercase hex-encoded id of the accounting area structure kind 1 event reference who is the partner of the transaction>],
       ["creation_date", <unix timestamp in seconds>], //this should be the real "creation date" as in comparison to the above "created_at" field used as posting period data field
       ["journal_entries", <64-bit integer for account number from account data structure>, <financial data amount in smallest unit of the general ledger currency>, ...]
+      ["je_backup", <reference to a backup file for the journal entry, e.g. saved on a blossom server (tbd defined more detailed)>]
   ]
   "content": <optional posting description/comment>
   "sig": <64-bytes lowercase hex of the signature of the sha256 hash of the serialized event data, which is the same as the "id" field>
@@ -26,4 +27,4 @@ Format of General Ledger Entry Event -
 In a general ledger entry the amounts in the "journal_entries" tags should overall sum up to zero.
 Positive amount is a debit entry, a negative amount a credit entry (or interpreted like amount goes from (negative amount accounts) to (positive amount accounts).
 
-This note should introduce the "movement_type" (0, "general ledger movement"), "kind" (8001, "general ledger entry").
+This note should introduce the "je_movement_type" (0, "general ledger movement"), "kind" (8001, "general ledger entry").
