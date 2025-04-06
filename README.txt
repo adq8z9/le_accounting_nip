@@ -12,8 +12,12 @@ Event kinds:
 (8001, general ledger entry)
 
 Tags:
-()
-()
+(accounting_area, ")
+(movement_types, ")
+(subledger_reference, ")
+(posting_partner, ")
+(creation_date, ")
+(journal_entries, ")
 
 "Movement_types":
 (0, general ledger movement)
