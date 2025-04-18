@@ -8,6 +8,11 @@ It is implementations of nostr events from nostr-protocol. So in doubt and for e
 
 The following new kinds, tags and for this implementation specific "je_movement_types" are introduced:
 
+Implementation proposals:
+0 - General Ledger Entry
+1 - Accounting area
+2 - Accounts structure
+
 Event kinds:
 - from 0 -
 (8001, general ledger entry)
@@ -24,7 +29,7 @@ Tags:
 (journal_entries, ")
 (je_backup, ")
 - from 1 -
-(account_structure, ")
+(accounts_structure, ")
 ("allowed_posters", ")
 
 "Je_movement_types":
