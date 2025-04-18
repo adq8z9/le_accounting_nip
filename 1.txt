@@ -10,7 +10,7 @@ Format of Accounting Area Event -
   "kind": 38001,
   "tags": [
       ["d", <64-bit integer for accounting area id>],
-      ["account_structure", <ref to account structure event],
+      ["accounts_structure", <ref to account structure event],
       ["allowed_posters", <32-bytes lowercase hex-encoded public key>, <tbd, some kind of level restriction?; for now empty>], //public keys that are allowed to post on the accounting area
       ...
       ["allowed_posters", <32-bytes lowercase hex-encoded public key>, <tbd, some kind of level restriction?; for now empty>]
