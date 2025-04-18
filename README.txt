@@ -26,7 +26,7 @@ Tags:
 (subledger_reference, ")
 (je_posting_partner, ")
 (je_creation_date, ")
-(journal_entries, ")
+(journal_entry, ")
 (je_backup, ")
 - from 1 -
 (accounts_structure, ")
