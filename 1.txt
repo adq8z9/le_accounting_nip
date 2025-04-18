@@ -1,0 +1,22 @@
+1:
+Accounting area.
+
+Format of Accounting Area Event -
+
+{
+  "id": <32-bytes lowercase hex-encoded sha256 of the serialized posting data>,
+  "pubkey": <32-bytes lowercase hex-encoded public key of the posting creator>,
+  "created_at": <unix timestamp in seconds>,
+  "kind": 38001,
+  "tags": [
+      ["d", <64-bit integer for accounting area id>],
+      ["account_structure", <ref to account structure event],
+      ["allowed_posters", <32-bytes lowercase hex-encoded public key>, <tbd, some kind of level restriction?; for now empty>], //public keys that are allowed to post on the accounting area
+      ...
+      ["allowed_posters", <32-bytes lowercase hex-encoded public key>, <tbd, some kind of level restriction?; for now empty>]
+  ]
+  "content": <optional accounting area description/comment>
+  "sig": <64-bytes lowercase hex of the signature of the sha256 hash of the serialized event data, which is the same as the "id" field>
+}
+
+This note should introduce the "kind" (38001, "accounting area").
