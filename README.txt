@@ -18,6 +18,8 @@ Event kinds:
 (8001, general ledger entry)
 - from 1 -
 (38001, accounting area event)
+- from 2 -
+(38002, accounts structure event)
 
 Tags:
 - from 0 -
@@ -30,7 +32,10 @@ Tags:
 (je_backup, ")
 - from 1 -
 (accounts_structure, ")
-("allowed_posters", ")
+(allowed_poster, ")
+- from 2 -
+(header, ")
+(account, ")
 
 "Je_movement_types":
 - from 0 -
