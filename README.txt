@@ -34,7 +34,6 @@ Tags:
 (accounts_structure, ")
 (allowed_poster, ")
 - from 2 -
-(header, ")
 (account, ")
 
 "Je_movement_types":
