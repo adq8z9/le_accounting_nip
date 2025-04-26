@@ -32,7 +32,7 @@ Tags:
 (je_backup, ")
 - from 1 -
 (accounts_structure, ")
-(allowed_poster, ")
+(poster_rules, ")
 - from 2 -
 (account, ")
 
