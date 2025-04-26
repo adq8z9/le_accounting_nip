@@ -11,6 +11,7 @@ Format of Accounting Area Event -
   "tags": [
       ["d", <64-bit integer for accounting area id>],
       ["accounts_structure", <32-bytes lowercase hex-encoded public key of kind 38002 event creator of accounts_structure for which is booked>, <64-bit id of accounts structure of specified public key for which is booked; d-tag of corresponding kind 38002 event>],
+      ["currency", <string for currency ref>]
       ["allowed_poster", <32-bytes lowercase hex-encoded public key>, <tbd, some kind of level restriction?; for now empty>], //public keys that are allowed to post on the accounting area
       ...
       ["allowed_poster", <32-bytes lowercase hex-encoded public key>, <tbd, some kind of level restriction?; for now empty>]
