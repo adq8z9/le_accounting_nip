@@ -10,9 +10,9 @@ Format of Accounts Structure Event -
   "kind": 38002,
   "tags": [
       ["d", <64-bit integer for accounts structure id>],
-      ["header", <64-bit integer header id>, <string of header name>, <64-bit integer header level starting from 0 highest level to finer levels>],
+      ["account", <64-bit integer account id>, <string of account name>]
       ...
-      ["account", <64-bit integer account id>, <string of account name>, <account_header id to which account belongs>]
+      ["account", <64-bit integer account id>, <string of account name>]
   ]
   "content": <optional accounts structure description/comment>
   "sig": <64-bytes lowercase hex of the signature of the sha256 hash of the serialized event data, which is the same as the "id" field>
