@@ -1,8 +1,10 @@
-# 1: Accounting area.
+# fan 01 
+
+## Accounting area
 
 Represents entity / area for which the accounting is to be done. And specifies meta-data of this entity / area.
 
-## Format of Accounting Area Event
+## Format of accounting area event
 
 ~~~yaml
 {
