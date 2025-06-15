@@ -2,8 +2,9 @@
 
 ## Ledger structure
 
-Represents ledger structure for which the accounting is to be done. And specifies meta-data of this ledger structure.
-Ledger structure events can be issued preconfigured by someone and then used / referenced by the accounting entity, or the accounting entity makes its own ledger structure event.
+Represents ledger structure for which the accounting is to be done. And specifies meta-data of this ledger structure.  
+Ledger structure events can be issued preconfigured by someone and then used / referenced by the accounting entity, or the accounting entity makes its own ledger structure event.  
+When updated backwards compatibility has to be ensured by the issuer.
 
 ## Format of ledger structure event
 
