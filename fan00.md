@@ -30,7 +30,7 @@ movement type / sl reference / external reference / media reference
 }
 ~~~
 
-In a general ledger entry the amounts in the "journal_entry" tags should overall sum up to zero.  
-Positive amount is a debit entry, a negative amount a credit entry (or interpreted like amount goes from (negative amount accounts) to (positive amount accounts).  
+The structure ensures that debit and credits equal, if valid 'debit_lacc' and 'credit_lacc' are specified.  
+The movement-flow of the transfer can be normally interpreted as going from the 'credit_lacc' to the 'debit_lacc' account.  
   
 This note should introduce the "je_movement_type" (0, "general ledger movement"), "kind" (8001, "general ledger entry").
