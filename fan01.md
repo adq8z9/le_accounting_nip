@@ -3,7 +3,6 @@
 ## Accounting area
 
 Represents entity / area of a pubkey for which the accounting is to be done. And specifies meta-data of this entity / area.
-A pubkey can have multiple accounting areas, or can reference an accounting area from another pubkey to which it belongs.
 
 ## Format of accounting area event
 
@@ -16,7 +15,6 @@ A pubkey can have multiple accounting areas, or can reference an accounting area
   "tags": [
     ["d", <identifier for the accounting area>],
     ["title", <title of accounting area>],
-    ["a", "37702:<pubkey of used general ledger structure event>:<d tag value of used general ledger structure event>", <recommended relay URL, optional>],
   ],
   "content": <optional accounting area description/comment>,
   "sig": <64-bytes lowercase hex of the signature of the sha256 hash of the serialized event data, which is the same as the "id" field>
