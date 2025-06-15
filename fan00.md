@@ -1,11 +1,12 @@
-0:
-General Ledger Entry.
+# fan 00
 
-This note aims to describe the structure for the general ledger entry on wire.
+## Ledger entry
 
+This note aims to describe the structure for the a debit / credit ledger entry.
 
-Format of General Ledger Entry Event -
+## Format of ledger entry event
 
+~~~yaml
 {
   "id": <32-bytes lowercase hex-encoded sha256 of the serialized posting data>,
   "pubkey": <32-bytes lowercase hex-encoded public key of the posting creator>,
@@ -25,8 +26,9 @@ Format of General Ledger Entry Event -
   "content": <optional posting description/comment>
   "sig": <64-bytes lowercase hex of the signature of the sha256 hash of the serialized event data, which is the same as the "id" field>
 }
+~~~
 
-In a general ledger entry the amounts in the "journal_entry" tags should overall sum up to zero.
-Positive amount is a debit entry, a negative amount a credit entry (or interpreted like amount goes from (negative amount accounts) to (positive amount accounts).
-
+In a general ledger entry the amounts in the "journal_entry" tags should overall sum up to zero.  
+Positive amount is a debit entry, a negative amount a credit entry (or interpreted like amount goes from (negative amount accounts) to (positive amount accounts).  
+  
 This note should introduce the "je_movement_type" (0, "general ledger movement"), "kind" (8001, "general ledger entry").
