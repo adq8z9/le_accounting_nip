@@ -3,6 +3,7 @@
 ## Ledger structure
 
 Represents ledger structure for which the accounting is to be done. And specifies meta-data of this ledger structure.
+Ledger structure events can be issued preconfigured by someone and then used / referenced by the accounting entity, or the accounting entity makes its own ledger structure event.
 
 ## Format of ledger structure event
 
@@ -18,7 +19,7 @@ Represents ledger structure for which the accounting is to be done. And specifie
       ...
       ["laccount", <ledger account id>, <string of ledger account name>, <optional further description of ledger account>]
   ]
-  "content": <optional accounts structure description/comment>
+  "content": <optional ledger structure description/comment>
   "sig": <64-bytes lowercase hex of the signature of the sha256 hash of the serialized event data, which is the same as the "id" field>
 }
 ~~~
