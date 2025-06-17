@@ -19,7 +19,7 @@ When updated backwards compatibility has to be ensured by the issuer.
       ["d", <identifier for ledger structure>],
       ["title", <title of ledger],
       ["description", <optional further description of the ledger>],
-      ["a", <adressable reference to accounting unit set (kind 37703) as specified below>, "acc_unit_set"],
+      ["a", <adressable reference to accounting unit set (kind 37703) as specified below>],
       ["laccount", <ledger account id>, <string of ledger account name>, <optional further description of ledger account>],
       ...
       ["laccount", <ledger account id>, <string of ledger account name>, <optional further description of ledger account>],
