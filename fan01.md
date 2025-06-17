@@ -15,7 +15,8 @@ Represents entity / area of a pubkey for which the accounting is to be done. And
   "tags": [
     ["d", <identifier for the accounting area>],
     ["title", <title of accounting area>],
-    ["description", <optional further description of the accounting area>]
+    ["description", <optional further description of the accounting area>],
+    //... plus maybe further useful tags
   ],
   "content": <optional accounting area description/comment>,
   "sig": <64-bytes lowercase hex of the signature of the sha256 hash of the serialized event data, which is the same as the "id" field>
