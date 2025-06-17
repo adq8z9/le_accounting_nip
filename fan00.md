@@ -23,7 +23,7 @@ Multi-debit-muli-credit-transfers should be handled, if not divisible in single 
     ["acc_unit_scale", <Integer n of the factor 10^n for which holds (le_amount-field / 10^n = amount in 'acc_unit' base)],
     ["published_at", <unix timestamp in seconds>], // timestamp at which the event was created / published
     -["a", <>, "accounting area"], //accounting area event, fan01
-    ["a", <adressable reference to accounting ledger event (kind 37702) as specified in fan02>, "acc_ledger"] //accounting ledger event, fan02
+    ["a", <adressable reference to accounting ledger event (kind 37702) as specified in fan02>]
     -["posting partner", <>]
     ["lmvt_type", <ledger movement type id from above referenced ledger structure event reference>],
     -["sl reference", <>]
