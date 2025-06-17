@@ -13,7 +13,7 @@ E.g.
 - Accounting in a NIP-29 relay-based private group (?)
 - (...?)
 
-Another advantage for a implementator is besides interoperability, that you can rely on the further nostr infrastructure (relay implementations, client libraries, etc.).
+Another advantage besides interoperability is for implementators might be, that you can rely on the further nostr infrastructure (relay implementations, client libraries, etc.).
 
 # The following new kinds, tags and for this implementation specific "je_movement_types" are introduced
 
