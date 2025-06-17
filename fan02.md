@@ -3,6 +3,7 @@
 ## Accounting ledger / journal
 
 Represents ledger structure for which the accounting is to be done. And specifies meta-data of this ledger structure.  
+
 Ledger events can be issued preconfigured by someone and then used / referenced by the accounting entity, or the accounting entity makes its own ledger structure events.  
 When updated backwards compatibility has to be ensured by the issuer.
 
@@ -33,4 +34,4 @@ When updated backwards compatibility has to be ensured by the issuer.
 
 ## Accounting unit set
 
-A set as specified in NIP-51, with **kind:37703** and tag values **["acc_unit", <acc_unit, e.g. 'BTC'>**.
+A set as specified in NIP-51, with **kind:37703** and tag values **\["acc_unit", \<acc_unit, e.g. 'BTC'\>\]**.
