@@ -25,7 +25,8 @@ When updated backwards compatibility has to be ensured by the issuer.
       ["laccount", <ledger account id>, <string of ledger account name>, <optional further description of ledger account>],
       ["lmvt_type", <ledger movement type id>, <string of ledger movement type id>, <optional further description of ledger movement type>],
       ...
-      ["lmvt_type", <ledger movement type id>, <string of ledger movement type id>, <optional further description of ledger movement type>]
+      ["lmvt_type", <ledger movement type id>, <string of ledger movement type id>, <optional further description of ledger movement type>],
+      //... plus maybe further useful tags
   ],
   "content": <optional ledger description/comment>
   "sig": <64-bytes lowercase hex of the signature of the sha256 hash of the serialized event data, which is the same as the "id" field>
