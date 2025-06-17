@@ -36,4 +36,5 @@ Multi-debit-muli-credit-transfers should be handled, if not divisible in single 
 ~~~
 
 The structure ensures that debit and credits equal, if valid 'debit_lacc' and 'credit_lacc' are specified.  
+  
 The movement-flow of the transfer can be normally interpreted as going from the 'credit_lacc' to the 'debit_lacc' account.  
