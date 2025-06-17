@@ -9,7 +9,7 @@ It is implementations of nostr events from nostr-protocol. So in doubt and for e
 
 Even if full public accounting on nostr probably doesn't make sense in most cases, there might be some use cases.
 E.g. 
-- Relaying batch transations between different sub-systems over nostr relays in a gift wrap (interface) (?)
+- Relaying batch transations between different sub-systems over nostr relays in a gift wrap (as interface) (?)
 - Accounting in a NIP-29 relay-based private group (?)
 - (...?)
 
