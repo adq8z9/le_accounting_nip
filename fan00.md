@@ -22,13 +22,16 @@ Multi-debit-muli-credit-transfers should be handled, if not divisible in single 
     ["acc_unit", <Unit code for the transfer; The allowed unit codes are specified in the accounting ledger event referenced below>],
     ["acc_unit_scale", <Integer n of the factor 10^n for which holds (le_amount-field / 10^n = amount in 'acc_unit' base)],
     ["published_at", <unix timestamp in seconds>], // timestamp at which the event was created / published
-    -["a", <>, "accounting area"], //accounting area event, fan01
+    ["A", <adressable reference to accounting area event (kind 37701) as specified in fan01>], //accounting area for which is booked
     ["a", <adressable reference to accounting ledger event (kind 37702) as specified in fan02>]
-    -["posting partner", <>]
+    ["a", <adressable reference to accounting area event (kind 37701) as specified in fan01>], //accounting area against which is booked (partner of the entry)
     ["lmvt_type", <ledger movement type id from above referenced ledger structure event reference>],
-    -["sl reference", <>]
-    -["external reference", <>]
-    -["media reference", <>]
+    //in the following optional references to supporting documents for the entry
+    ["i", <external content IDs which are in reference to the posting according to NIP-73],
+    ["e", <reference to related events e.g. transfer from other sub-ledger, etc.>],
+    ["imeta", <imeta tag according to NIP-92>],
+    ["a", <reference to a kind 1063 media event>],
+    //... plus maybe further useful tags
   ]
   "content": <optional posting description/comment>
   "sig": <64-bytes lowercase hex of the signature of the sha256 hash of the serialized event data, which is the same as the "id" field>
