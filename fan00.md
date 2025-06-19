@@ -14,7 +14,7 @@ Multi-debit-muli-credit-transfers should be handled, if not divisible in single 
   "id": <32-bytes lowercase hex-encoded sha256 of the serialized posting data>,
   "pubkey": <32-bytes lowercase hex-encoded public key of the posting creator>,
   "created_at": <unix timestamp in seconds>, //this should be used as timestamp of the posting period / time to which the posting should belong, rather than the real creation timestamp of the event, for better filtering
-  "kind": 8711, //
+  "kind": 37700, //
   "tags": [
     ["debit_lacc", <ledger account id from below specified accounting ledger event reference>],
     ["credit_lacc", <ledger account id from below specified accounting ledger event reference>],
