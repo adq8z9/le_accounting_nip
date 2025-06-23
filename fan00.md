@@ -9,7 +9,7 @@ Multi-debit-muli-credit-transfers should be handled, if not divisible in single 
 
 ## Format of accounting ledger entry event
 
-~~~yaml
+~~~
 {
   "id": <32-bytes lowercase hex-encoded sha256 of the serialized posting data>,
   "pubkey": <32-bytes lowercase hex-encoded public key of the posting creator>,
