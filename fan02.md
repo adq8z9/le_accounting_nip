@@ -9,12 +9,12 @@ When updated backwards compatibility has to be ensured by the issuer.
 
 ## Format of accounting ledger event
 
-~~~yaml
+~~~
 {
   "id": <32-bytes lowercase hex-encoded sha256 of the serialized posting data>,
   "pubkey": <32-bytes lowercase hex-encoded public key of the event creator>,
   "created_at": <unix timestamp in seconds>,
-  "kind": 37702, // as defined in NIP-01 a addressable kind-number is used for this event-type
+  "kind": 37703, // as defined in NIP-01 a addressable kind-number is used for this event-type
   "tags": [
       ["d", <identifier for ledger structure>],
       ["name", <name of ledger],
@@ -35,4 +35,4 @@ When updated backwards compatibility has to be ensured by the issuer.
 
 ## Accounting unit set
 
-A set as specified in NIP-51, with **kind:37703** and tag values **\["acc_unit", \<acc_unit, e.g. 'BTC'\>\]**.
+A set as specified in NIP-51, with **kind:37704** and tag values **\["acc_unit", \<acc_unit, e.g. 'BTC'\>\]**.
