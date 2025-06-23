@@ -1,4 +1,4 @@
-# Note
+# Pre-Notes
 
 This implementation proposals aim to be a on nostr events based form for exchanging (financial) accounting data.  
 (The target is financial accounting, but the data structure is more general and could be also used for other forms of accounting).
@@ -15,7 +15,7 @@ When the work is done the entity (or someone else) can create a accounting repor
 
 All events can be either kept private or be individually published publicly according to preference.
 
-## Implementation
+## Further implementation considerations
 
 Even if full public accounting on nostr probably doesn't make sense in most cases, there might be some other use cases.
 E.g. 
