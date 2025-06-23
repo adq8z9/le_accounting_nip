@@ -1,13 +1,10 @@
-# fan 03 
+# fan 02
 
-## Accounting ledger / journal
+## Accounting report
 
-Represents ledger structure for which the accounting is to be done. And specifies meta-data of this ledger structure.  
+Represents an accounting report based on the accounting data from the other fan.
 
-Ledger events can be issued preconfigured by someone and then used / referenced by the accounting entity, or the accounting entity makes its own ledger structure events.  
-When updated backwards compatibility has to be ensured by the issuer.
-
-## Format of accounting ledger event
+## Format of accounting report event
 
 ~~~yaml
 {
