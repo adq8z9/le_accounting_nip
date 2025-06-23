@@ -18,7 +18,27 @@ When updated backwards compatibility has to be ensured by the issuer.
       ["d", <identifier for accounting ledger / journal>],
       ["name", <name of accounting ledger / journal],
       ["description", <optional further description of the accounting ledger / journal>],
-      ["a", <adressable reference to accounting area event (kind 37701) as specified in fan01 for which the accounting / ledger is booked>]
+      ["a", <adressable reference to accounting ledger / journal structure event (kind 37703) as specified below>],
+      ["posting rules/roles"],
+      //... plus maybe further useful tags
+  ],
+  "content": <optional ledger description/comment>
+  "sig": <64-bytes lowercase hex of the signature of the sha256 hash of the serialized event data, which is the same as the "id" field>
+}
+~~~
+
+## Format of accounting ledger / journal structure event
+
+~~~
+{
+  "id": <32-bytes lowercase hex-encoded sha256 of the serialized posting data>,
+  "pubkey": <32-bytes lowercase hex-encoded public key of the event creator>,
+  "created_at": <unix timestamp in seconds>,
+  "kind": 37703, // as defined in NIP-01 a addressable kind-number is used for this event-type
+  "tags": [
+      ["d", <identifier for accounting ledger / journal structure>],
+      ["name", <name of accounting ledger / journal structure>],
+      ["description", <optional further description of the accounting ledger / journal structure>],
       ["a", <adressable reference to allowed accounting unit set (kind 37703) as specified below>],
       ["laccount", <ledger account id>, <string of ledger account name>, <optional further description of ledger account>],
       ...
