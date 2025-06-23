@@ -16,13 +16,13 @@ Multi-debit-muli-credit-transfers should be handled, if not divisible in single 
   "created_at": <unix timestamp in seconds>, //this should be used as timestamp of the posting period / time to which the posting should belong, rather than the real creation timestamp of the event, for better filtering
   "kind": 7701, // as defined in NIP-01 a regular kind-number is used for this event-type
   "tags": [
-    ["acc_debit_lacc", <ledger account id from below specified accounting ledger / journal event reference>],
-    ["acc_credit_lacc", <ledger account id from below specified accounting ledger / journal event reference>],
+    ["acc_le_debit_lacc", <ledger account id from below specified accounting ledger / journal event reference>],
+    ["acc_le_credit_lacc", <ledger account id from below specified accounting ledger / journal event reference>],
     ["acc_amount", <Integer amount of the transfer in the unit and scale provided below>],
     ["acc_unit_scale", <Integer n of the factor 10^n for which holds (le_amount-field / 10^n = amount in 'acc_unit' base)],
     ["acc_unit", <Unit code for the transfer; The allowed unit codes are specified in the accounting ledger event referenced below>],
-    ["acc_lmvt_type", <ledger movement type id from below specified accounting ledger / journal event reference>],
-    ["acc_partner", <id of accounting partner of transaction>],
+    ["acc_le_lmvt_type", <ledger movement type id from below specified accounting ledger / journal event reference>],
+    ["acc_le_partner", <id of accounting partner of transaction>],
     ["A", <adressable reference to accounting ledger / journal event (kind 37701), for which is booked>],
     ["published_at", <unix timestamp in seconds>], // timestamp at which the event was created / published
     //in the following optional references to supporting documents for the entry can be included
