@@ -14,7 +14,7 @@ Represents entity / area of a pubkey for which the accounting is to be done. And
   "kind": 37701, // as defined in NIP-01 a addresssable kind-number is used for this event-type
   "tags": [
     ["d", <identifier for the accounting area>],
-    ["title", <title of accounting area>],
+    ["name", <name of accounting area>],
     ["description", <optional further description of the accounting area>],
     //... plus maybe further useful tags
   ],
