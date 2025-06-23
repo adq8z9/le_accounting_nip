@@ -4,6 +4,8 @@
 
 Represents an accounting report based on the accounting data from the other fan.
 
+A accounting report event could be timestamped and covered by an attestation event.
+
 ## Format of accounting report event
 
 ~~~
@@ -16,7 +18,13 @@ Represents an accounting report based on the accounting data from the other fan.
       ["name", <name of accounting report>],
       ["description", <optional further description of the accounting report>],
       ["a", <adressable reference to accounting report template event (kind 37703) as specified below>],
-      //
+      //report file
+      ["imeta", <imeta tag according to NIP-92>, "report"], or
+      ["e", <reference to a kind 1063 media event>, "report"],
+      //backup files with which the report should be reproducable
+      ["x", <hash of used data with which report is reproproducable>, "data"],
+      ["imeta", <imeta tag according to NIP-92>, "data"]
+      ["e", <reference to a kind 1063 media event which could be published public or kept private>, "data"],
       //... plus maybe further useful tags
   ],
   "content": <optional accounting report description/comment>
