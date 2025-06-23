@@ -14,14 +14,15 @@ Multi-debit-muli-credit-transfers should be handled, if not divisible in single 
   "id": <32-bytes lowercase hex-encoded sha256 of the serialized posting data>,
   "pubkey": <32-bytes lowercase hex-encoded public key of the posting creator>,
   "created_at": <unix timestamp in seconds>, //this should be used as timestamp of the posting period / time to which the posting should belong, rather than the real creation timestamp of the event, for better filtering
-  "kind": 37700, //
+  "kind": 7700, //
   "tags": [
     ["debit_lacc", <ledger account id from below specified accounting ledger / journal event reference>],
     ["credit_lacc", <ledger account id from below specified accounting ledger / journal event reference>],
-    ["lmvt_type", <ledger movement type id from below specified accounting ledger / journal event reference>],
     ["acc_amount", <Integer amount of the transfer in the unit and scale provided below>],
     ["acc_unit_scale", <Integer n of the factor 10^n for which holds (le_amount-field / 10^n = amount in 'acc_unit' base)],
     ["acc_unit", <Unit code for the transfer; The allowed unit codes are specified in the accounting ledger event referenced below>],
+    ["lmvt_type", <ledger movement type id from below specified accounting ledger / journal event reference>],
+    ["acc_partner", <id of accounting partner of transaction>],
     ["A", <adressable reference to accounting ledger / journal event (kind 37702) as specified in fan01, for which is booked>],
     ["published_at", <unix timestamp in seconds>], // timestamp at which the event was created / published
     //in the following optional references to supporting documents for the entry can be included
