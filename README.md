@@ -27,7 +27,7 @@ Another advantage of using fan besides interoperability might be, that you can r
 
 ## The following new kinds and tags are introduced
 
-| kind          | description                           | NIP             |
+| kind          | description                           | NUD             |
 | ------------- | ------------------------------------- | --------------- |
 | `7701`        | accounting ledger entry               | fan01           |
 | `7702`        | accounting report                     | fan03           |
@@ -35,7 +35,7 @@ Another advantage of using fan besides interoperability might be, that you can r
 | `37702`       | accounting ledger / journal structure | fan02           |
 | `37703`       | accounting report template            | fan03           |
 
-| name                  | value                                                                                            | other parameters                                                                                                      | NIP                 |
+| name                  | value                                                                                            | other parameters                                                                                                      | NUD                 |
 | --------------------- | ------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------- | ------------------- |
 | `acc_le_debit_lacc`   | ledger account id for debit le entry                                                             | --                                                                                                                    | fan01               |
 | `acc_le_credit_lacc`  | ledger account id for credit le entry                                                            | --                                                                                                                    | fan01               |
