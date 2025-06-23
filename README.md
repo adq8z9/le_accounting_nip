@@ -27,19 +27,27 @@ Another advantage of using fan besides interoperability might be, that you can r
 
 ## The following new kinds and tags are introduced
 
-| kind          | description                     | NIP             |
-| ------------- | ------------------------------- | --------------- |
-| `7701`        | accounting ledger entry         | fan01           |
-| `7702`        | accounting report               | fan03           |
-| `2`           | Recommend Relay                 | 01 (deprecated) |
+| kind          | description                           | NIP             |
+| ------------- | ------------------------------------- | --------------- |
+| `7701`        | accounting ledger entry               | fan01           |
+| `7702`        | accounting report                     | fan03           |
+| `37701`       | accounting ledger / journal           | fan02           |
+| `37702`       | accounting ledger / journal structure | fan02           |
+| `37703`       | accounting report template            | fan03           |
 
-| name              | value                                                                                        | other parameters           | NIP         |
-| ----------------- | -------------------------------------------------------------------------------------------- | -------------------------- | ----------- |
-| `acc_debit_lacc`  | ledger account id for debit le entry                                                         | --                         | fan01       |
-| `acc_credit_lacc` | ledger account id for credit le entry                                                        | --                         | fan01       |
-| `acc_amount`      | integer amount of unit and scale seperately specified                                        | --                         | fan01       |
-| `acc_unit_scale`  | Integer n of the factor 10^n for which holds (acc_amount / 10^n = amount in 'acc_unit' base) | --                         | fan01       |
-| `acc_unit`        | Unit code for the acc_amount, acc_unit_scale tags                                            | --                         | fan01       |
-| `acc_lmvt_type`   | ledger movement id for le entry                                                              | --                         | fan01       |
-| `acc_partner'     | accounting partner id for le entry                                                           | --                         | fan01       |
-
+| name                  | value                                                                                            | other parameters                                                                                                      | NIP                 |
+| --------------------- | ------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------- | ------------------- |
+| `acc_le_debit_lacc`   | ledger account id for debit le entry                                                             | --                                                                                                                    | fan01               |
+| `acc_le_credit_lacc`  | ledger account id for credit le entry                                                            | --                                                                                                                    | fan01               |
+| `acc_amount`          | integer amount of unit and scale seperately specified                                            | --                                                                                                                    | fan01               |
+| `acc_unit_scale`      | Integer n of the factor 10^n for which holds (acc_amount / 10^n = amount in 'acc_unit' base)  | --                                                                                                                    | fan01               |
+| `acc_unit`            | Unit code for the acc_amount, acc_unit_scale tags                                                | --                                                                                                                    | fan01, fan02        |
+| `acc_le_mvt_type`     | ledger movement id for le entry                                                                  | --                                                                                                                    | fan01               |
+| `acc_le_partner`      | accounting partner id for le entry                                                               | --                                                                                                                    | fan01               |
+| `acc_partner`         | id of accounting partner                                                                         | accounting partner name, description of accounting partner, accounting partner category id                       | fan02               |
+| `acc_laccount`        | ledger account id                                                                                | ledger account name, description of ledger account                                                                    | fan02               |
+| `acc_lmvt_type`       | ledger movement type id                                                                          | ledger movement type name, description of ledger movement type                                                        | fan02               |
+| `acc_role`           | accounting role id                                                                                | accounting role name, accounting role description, allowed laccounts to book on, allowed lmvt_types to book on  | fan02               |
+| `acc_partner_cat`    | accounting partner category                                                                       | accounting partner category name, description accounting partner category,                                            | fan02               |
+| `acc_partner_cat`   | accounting partner category                                                                        | accounting partner category name, description accounting partner category,                                            | fan02               |
+| `acc_partner_cat`   | accounting partner category                                                                        | accounting partner category name, description accounting partner category,                                            | fan02               |
