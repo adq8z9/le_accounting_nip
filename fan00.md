@@ -16,15 +16,13 @@ Multi-debit-muli-credit-transfers should be handled, if not divisible in single 
   "created_at": <unix timestamp in seconds>, //this should be used as timestamp of the posting period / time to which the posting should belong, rather than the real creation timestamp of the event, for better filtering
   "kind": 37700, //
   "tags": [
-    ["debit_lacc", <ledger account id from below specified accounting ledger event reference>],
-    ["credit_lacc", <ledger account id from below specified accounting ledger event reference>],
+    ["debit_lacc", <ledger account id from below specified accounting ledger / journal event reference>],
+    ["credit_lacc", <ledger account id from below specified accounting ledger / journal event reference>],
+    ["lmvt_type", <ledger movement type id from below specified accounting ledger / journal event reference>],
     ["acc_amount", <Integer amount of the transfer in the unit and scale provided below>],
     ["acc_unit_scale", <Integer n of the factor 10^n for which holds (le_amount-field / 10^n = amount in 'acc_unit' base)],
     ["acc_unit", <Unit code for the transfer; The allowed unit codes are specified in the accounting ledger event referenced below>],
-    ["A", <adressable reference to accounting area event (kind 37701) as specified in fan01 for which is booked>],
-    ["A", <adressable reference to accounting ledger event (kind 37702) as specified in fan02, for which is booked>],
-    ["a", <adressable reference to accounting area event (kind 37701) as specified in fan01>], //accounting area against which is booked (partner of the entry), could be used e.g. for consolidations
-    ["lmvt_type", <ledger movement type id from above referenced ledger structure event reference>],
+    ["A", <adressable reference to accounting ledger / journal event (kind 37702) as specified in fan01, for which is booked>],
     ["published_at", <unix timestamp in seconds>], // timestamp at which the event was created / published
     //in the following optional references to supporting documents for the entry can be included
     ["i", <external content IDs which are in reference to the posting according to NIP-73>],
@@ -33,7 +31,7 @@ Multi-debit-muli-credit-transfers should be handled, if not divisible in single 
     ["a", <reference to a kind 1063 media event>],
     //... plus maybe further useful tags
   ]
-  "content": <optional posting description/comment>
+  "content": <optional posting description/comment; more individually needed Meta-Data could be included>
   "sig": <64-bytes lowercase hex of the signature of the sha256 hash of the serialized event data, which is the same as the "id" field>
 }
 ~~~
