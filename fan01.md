@@ -51,13 +51,13 @@ When updated backwards compatibility has to be ensured by the issuer.
       ...
       ["acc_unit", <Allowed unit code for transfers / entries>],
        //in following the ledger accounts that are allowed to be used in the accounting ledger structure
-      ["laccount", <ledger account id>, <string of ledger account name>, <further description of ledger account, e.g. define additional tags for content field of accounting ledger entry event>],
+      ["acc_laccount", <ledger account id>, <string of ledger account name>, <further description of ledger account, e.g. define additional tags for content field of accounting ledger entry event>],
       ...
-      ["laccount", <ledger account id>, <string of ledger account name>, <further description of ledger account, e.g. define additional tags for content field of accounting ledger entry event>],
+      ["acc_laccount", <ledger account id>, <string of ledger account name>, <further description of ledger account, e.g. define additional tags for content field of accounting ledger entry event>],
       //in following the ledger movement types that are allowed to be used in the accounting ledger structure
-      ["lmvt_type", <ledger movement type id>, <string of ledger movement type id>, <further description of ledger movement type, e.g. define additional tags for content field of accounting ledger entry event>],
+      ["acc_lmvt_type", <ledger movement type id>, <string of ledger movement type id>, <further description of ledger movement type, e.g. define additional tags for content field of accounting ledger entry event>],
       ...
-      ["lmvt_type", <ledger movement type id>, <string of ledger movement type id>, <further description of ledger movement type, e.g. define additional tags for content field of accounting ledger entry event>],
+      ["acc_lmvt_type", <ledger movement type id>, <string of ledger movement type id>, <further description of ledger movement type, e.g. define additional tags for content field of accounting ledger entry event>],
       //in following the accounting roles that are allowed to be used in the accounting ledger structure
       ["acc_role", <account role id>, <string of accounting role name>, <further description of accounting role, e.g. define additional restrictions for accounting role>, <allowed laccounts to book on, listed with lacc1:lacc2:... (empty when all allowed)>, <allowed lmvt_types to book, listed with lmvtt1:lmvtt2:... (empty when all allowed)>],
       ...
