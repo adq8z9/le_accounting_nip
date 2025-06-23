@@ -29,7 +29,7 @@ Multi-debit-muli-credit-transfers should be handled, if not divisible in single 
     ["i", <external content IDs which are in reference to the posting according to NIP-73>],
     ["e", <reference to related events e.g. transfer from other sub-ledger, etc.>],
     ["imeta", <imeta tag according to NIP-92>],
-    ["a", <reference to a kind 1063 media event>],
+    ["e", <reference to a kind 1063 media event>],
     //... plus maybe further useful tags
   ]
   "content": <optional posting description/comment; more individually needed Meta-Data could be included>
