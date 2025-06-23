@@ -22,3 +22,7 @@ Represents entity / area of a pubkey for which the accounting is to be done. And
   "sig": <64-bytes lowercase hex of the signature of the sha256 hash of the serialized event data, which is the same as the "id" field>
 }
 ~~~
+
+## Accounting unit set
+
+A set as specified in NIP-51, with **kind:37702** and tag values **\["a", \<adressable reference to accounting area event (kind 37701)\>]** for accounting areas of a group, **\["A", \<adressable reference to accounting area event (kind 37701)\>]** for parent accounting area on which is consolidated.
