@@ -17,9 +17,9 @@ When updated backwards compatibility has to be ensured by the issuer.
   "kind": 37702, // as defined in NIP-01 a addressable kind-number is used for this event-type
   "tags": [
       ["d", <identifier for ledger structure>],
-      ["title", <title of ledger],
+      ["name", <name of ledger],
       ["description", <optional further description of the ledger>],
-      ["a", <adressable reference to accounting unit set (kind 37703) as specified below>],
+      ["a", <adressable reference to allowed accounting unit set (kind 37703) as specified below>],
       ["laccount", <ledger account id>, <string of ledger account name>, <optional further description of ledger account>],
       ...
       ["laccount", <ledger account id>, <string of ledger account name>, <optional further description of ledger account>],
