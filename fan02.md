@@ -2,12 +2,11 @@
 
 ## Accounting ledger / journal
 
-Represents ledger structure for which the accounting is to be done. And specifies meta-data of this ledger structure.  
+Represents ledger / journal for which the accounting is to be done. And specifies meta-data of this ledger structure.  
 
-Ledger events can be issued preconfigured by someone and then used / referenced by the accounting entity, or the accounting entity makes its own ledger structure events.  
 When updated backwards compatibility has to be ensured by the issuer.
 
-## Format of accounting ledger event
+## Format of accounting ledger / journal event
 
 ~~~
 {
@@ -16,9 +15,10 @@ When updated backwards compatibility has to be ensured by the issuer.
   "created_at": <unix timestamp in seconds>,
   "kind": 37703, // as defined in NIP-01 a addressable kind-number is used for this event-type
   "tags": [
-      ["d", <identifier for ledger structure>],
-      ["name", <name of ledger],
-      ["description", <optional further description of the ledger>],
+      ["d", <identifier for accounting ledger / journal>],
+      ["name", <name of accounting ledger / journal],
+      ["description", <optional further description of the accounting ledger / journal>],
+      ["a", <adressable reference to accounting area event (kind 37701) as specified in fan01 for which the accounting / ledger is booked>]
       ["a", <adressable reference to allowed accounting unit set (kind 37703) as specified below>],
       ["laccount", <ledger account id>, <string of ledger account name>, <optional further description of ledger account>],
       ...
