@@ -1,4 +1,4 @@
-# Pre-Notes
+# Notes
 
 This implementation proposals aim to be a on nostr events based form for exchanging (financial) accounting data.  
 (The target is financial accounting, but the data structure is more general and could be also used for other forms of accounting).
