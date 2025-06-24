@@ -1,4 +1,4 @@
-#NUD fan
+# NUD fan
 
 (Financial) accounting on nostr.
 
@@ -44,7 +44,7 @@ All events can be either kept private or be individually published publicly acco
 | `acc_role`            | accounting role id                                                                               | accounting role name, accounting role description, allowed laccounts to book on, allowed lmvt_types to book on        | 
 | `acc_partner_cat`     | accounting partner category                                                                      | accounting partner category name, description accounting partner category,                                            | 
 
-The other used tags are already defined in the main-NIPs and should be used with the values / parameters as defined there.
+The other used kinds and tags are already defined in the main-NIPs and should be used with the values / parameters as defined there.
 
 ## Accounting ledger / journal entry
 
