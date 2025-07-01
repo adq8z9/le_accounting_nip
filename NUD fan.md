@@ -149,8 +149,8 @@ The following fields are used as described in the "content"-field:
 }
 ~~~
 
-The following fields are used as described in the "content"-field:
-"name", "description", "acc_unit", "acc_laccount", "acc_lmvt_type", "acc_role", "acc_partner_cat". 
+The following fields are used as described in the "content"-field:  
+`"name"`, `"description"`, `"acc_unit"`, `"acc_laccount"`, `"acc_lmvt_type"`, `"acc_role"`, `"acc_partner_cat"`. 
 
 ## Accounting report
 
