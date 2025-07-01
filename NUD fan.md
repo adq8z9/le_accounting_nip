@@ -13,7 +13,7 @@ In doubt and for everything not covered here one should refer to the other nostr
 
 An entity wants to do accounting work. It creates an accounting ledger / journal event (kind 37701) for the specific accounting work. This ledger / journal event references a ledger / journal **structure** event (kind 37702) which defines general rules / framework for an accounting ledger / journal. The kind 37702 can either be created by someone other (e.g. a standard setter, etc.), or individually designed by the entity. The kind 37701 specifies the concrete accounting ledger / journal rules for the specific accounting work to be done.
 
-The kind 37701 is fetched by the accountants who have the assigned accounting roles in the 37701-event (could also be bots). They can create accounting ledger / journal entry events (kind 7701) based on these.
+The kind 37701 is fetched by the accountants who have the assigned accounting roles in the 37701-event (could also be bots or similar). They can create accounting ledger / journal entry events (kind 7701) based on these.
 
 When the work is done, or just inbetween, the entity (or someone else) can create a accounting report (kind 7702) based on a reporting template event (kind 37703) (or freely) and the ledger event as well as ledger entry events. The kind 37703 can either be created by someone other (e.g. a standard setter, etc.), or individually designed by the entity. The accounting report (kind 7702) can be used for external or internal reporting purposes and should be auditable against the underlying event data. Data visualisations and/or ad-hoc reports could also be implemented by clients without a report event, e.g. just for monitoring purposes.
 
@@ -58,7 +58,8 @@ Multi-debit-muli-credit-transfers should be handled, if not divisible in single 
 {
   "id": <32-bytes lowercase hex-encoded sha256 of the serialized posting data>,
   "pubkey": <32-bytes lowercase hex-encoded public key of the posting creator>,
-  "created_at": <unix timestamp in seconds>, //this should be used as timestamp of the posting period / time to which the posting should belong, rather than the real creation timestamp of the event, for better filtering
+  //the "created_at"-value should be used as timestamp of the posting period / time to which the posting should belong, rather than the real creation timestamp of the event, for better filtering
+  "created_at": <unix timestamp in seconds>,
   "kind": 7701, // as defined in NIP-01 a regular kind-number is used for this event-type
   "tags": [
     ["acc_le_debit_lacc", <ledger account id from below specified accounting ledger / journal event reference>],
@@ -75,16 +76,21 @@ Multi-debit-muli-credit-transfers should be handled, if not divisible in single 
     ["e", <reference to related events e.g. transfer from other sub-ledger, etc.>],
     ["imeta", <imeta tag according to NIP-92>],
     ["e", <reference to a kind 1063 media event>],
-    //... plus maybe further useful tags as used in other NIPs/NUDs if fitting
   ]
-  "content": <more individually needed Meta-Data could be included (e.g. as specified in a kind 37702 accounting ledger / journal structure event, e.g. there in a acc_lmvt_type description field). Format in a stringified JSON object (e.g.: '{description:<description>, xy:<zz>, ...}'>
+  "content":"{
+      "description":<description of the posting>,
+      <more individually needed Meta-Data could be included (e.g. as specified in a kind 37702 accounting ledger / journal structure event). Format in a stringified JSON object (e.g.: "xy":<zz>,)
+  }",
   "sig": <64-bytes lowercase hex of the signature of the sha256 hash of the serialized event data, which is the same as the "id" field>
 }
 ~~~
 
 The structure ensures that debit and credits equal, if valid 'acc_le_debit_lacc' and 'acc_le_credit_lacc' are specified.  
-  
+
 The movement-flow of the transfer can be normally interpreted as going from the 'acc_credit_lacc' (negative entry) to the 'acc_debit_lacc' (positive entry) account.  
+
+The following fields are used as described in the "content"-field:
+"description". 
 
 ## Accounting ledger / journal
 
@@ -101,23 +107,23 @@ When updated backwards compatibility has to be ensured by the issuer.
   "kind": 37701, // as defined in NIP-01 a addressable kind-number is used for this event-type
   "tags": [
       ["d", <identifier for accounting ledger / journal>],
-      ["name", <name of accounting ledger / journal],
-      ["description", <optional further description of the accounting ledger / journal>],
-      ["a", <adressable reference to accounting ledger / journal **structure** event (kind 37702) as specified below>],
-      //in the following rules for who can do postings, according to accounting roles from the above referenced accounting ledger / journal structure event, are specified
-      ["p", <pubkey>, <accounting role id described in the accounting ledger / journal structure event referenced above>],
-      ...
-      ["p", <pubkey>, <accounting role id described in the accounting ledger / journal structure event referenced above>],
-      //in the following rules for accounting partners, according to accounting partner categories from the above accounting ledger / journal structure event, are specified
-      ["acc_partner", <id of accounting partner>, <string of accounting partner name>, <further description of accounting partner>, <accounting partner category id described in the accounting ledger / journal structure event referenced above>],
-      ...
-      ["acc_partner", <id of accounting partner>, <string of accounting partner name>, <further description of accounting partner>, <accounting partner category id described in the accounting ledger / journal structure event referenced above>],
-      //... plus maybe further useful tags as used in other NIPs/NUDs if fitting
+      ["a", <adressable reference to accounting ledger / journal **structure** event (kind 37702) as specified below>, <relay URL-hint>],
+      ["r", <relay for accounting work>],
+      ...,
+      ["r", <relay for accounting work>],
   ],
-  "content": <stringified JSON object with more data if needed>
+  "content": "{
+      "name":<name of accounting ledger / journal>,
+      "description":<optional further description of the accounting ledger / journal>,
+      "accountant":[[<pubkey>, <accounting role id described in the accounting ledger / journal structure event referenced above>], [...], ...],
+      "acc_partner":[[<id of accounting partner>, <string of accounting partner name>, <further description of accounting partner>, <accounting partner category id described in the accounting ledger / journal structure event referenced above>], [...], ...],
+  }",
   "sig": <64-bytes lowercase hex of the signature of the sha256 hash of the serialized event data, which is the same as the "id" field>
 }
 ~~~
+
+The following fields are used as described in the "content"-field:
+"name", "description", "accountant", "acc_partner". 
 
 **Format of accounting ledger / journal structure event:**
 ~~~
@@ -128,34 +134,23 @@ When updated backwards compatibility has to be ensured by the issuer.
   "kind": 37702, // as defined in NIP-01 a addressable kind-number is used for this event-type
   "tags": [
       ["d", <identifier for accounting ledger / journal structure>],
-      ["name", <name of accounting ledger / journal structure>],
-      ["description", <optional further description of the accounting ledger / journal structure>],
-      //in following accounting units that are allowed to be used in the accounting ledger structure
-      ["acc_unit", <Allowed unit code for transfers / entries, e.g. ISO 4217-like codes for currency ('BTC'), but also sth like 'kg', or 'CO2Equ' might be thinkable >],
-      ...
-      ["acc_unit", <Allowed unit code for transfers / entries, e.g. ISO 4217-like codes for currency ('BTC'), but also sth like 'kg', or 'CO2Equ' might be thinkable >],
-       //in following the ledger accounts that are allowed to be used in the accounting ledger structure
-      ["acc_laccount", <ledger account id>, <string of ledger account name>, <further description of ledger account, e.g. define additional tags for content field of accounting ledger entry event>],
-      ...
-      ["acc_laccount", <ledger account id>, <string of ledger account name>, <further description of ledger account, e.g. define additional tags for content field of accounting ledger entry event>],
-      //in following the ledger movement types that are allowed to be used in the accounting ledger structure
-      ["acc_lmvt_type", <ledger movement type id>, <string of ledger movement type name>, <further description of ledger movement type, e.g. define additional tags for content field of accounting ledger entry event>],
-      ...
-      ["acc_lmvt_type", <ledger movement type id>, <string of ledger movement type name>, <further description of ledger movement type, e.g. define additional tags for content field of accounting ledger entry event>],
-      //in following the accounting roles that are allowed to be used in the accounting ledger structure
-      ["acc_role", <account role id>, <string of accounting role name>, <further description of accounting role, e.g. define additional restrictions for accounting role>, <allowed laccounts to book on, listed with lacc1-id:lacc2-id:... (empty when all allowed)>, <allowed lmvt_types to book, listed with lmvtt1-id:lmvtt2-id:... (empty when all allowed)>],
-      ...
-      ["acc_role", <account role id>, <string of accounting role name>, <further description of accounting role, e.g. define additional restrictions for accounting role>, <allowed laccounts to book on, listed with lacc1-id:lacc2-id:... (empty when all allowed)>, <allowed lmvt_types to book, listed with lmvtt1-id:lmvtt2-id:... (empty when all allowed)>],
-      //in following the accounting partner categories that are allowed to be used in the accounting ledger structure
-      ["acc_partner_cat", <id of accounting partner category>, <string of accounting partner category name>, <optional further description of accounting partner category>],
-      ...
-      ["acc_partner_cat", <id of accounting partner category>, <string of accounting partner category name>, <optional further description of accounting partner category>],
-      //... plus maybe further useful tags as used in other NIPs/NUDs if fitting
   ],
-  "content": <tringified JSON object with more data if needed>
+  // content should be stringified JSON object with the key:value fields needed for the accounting ledger / event structure
+  "content": "{
+      "name":<name of accounting ledger / journal structure>,
+      "description":<optional further description of the accounting ledger / journal structure>,
+      "acc_unit":[<Allowed unit code for transfers / entries, e.g. ISO 4217-like codes for currency ('BTC'), but also sth like 'kg', or 'CO2Equ' might be thinkable>, <allowed unit>, ...],
+      "acc_laccount":[[<ledger account id>, <string of ledger account name>, <description of ledger account>], [...], ...],
+      "acc_lmvt_type":[[<ledger movement type id>, <string of ledger movement type name>, <description of ledger movement type>], [...], ...],
+      "acc_role":[[<account role id>, <string of accounting role name>, <description of accounting role>, [<allowed laccounts ids to book on for acc_role>, ...]], [<allowed lmvt_types ids to book on for acc_role>, ..], [...], ...],
+      "acc_partner_cat", [[<id of accounting partner category>, <string of accounting partner category name>, <description of accounting partner category>], [...], ...],
+  }",
   "sig": <64-bytes lowercase hex of the signature of the sha256 hash of the serialized event data, which is the same as the "id" field>
 }
 ~~~
+
+The following fields are used as described in the "content"-field:
+"name", "description", "acc_unit", "acc_laccount", "acc_lmvt_type", "acc_role", "acc_partner_cat". 
 
 ## Accounting report
 
