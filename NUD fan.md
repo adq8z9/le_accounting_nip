@@ -143,7 +143,7 @@ The following fields are used as described in the "content"-field:
       "acc_laccount":[[<ledger account id>, <string of ledger account name>, <description of ledger account>], [...], ...],
       "acc_lmvt_type":[[<ledger movement type id>, <string of ledger movement type name>, <description of ledger movement type>], [...], ...],
       "acc_role":[[<account role id>, <string of accounting role name>, <description of accounting role>, [<allowed laccounts ids to book on for acc_role>, ...]], [<allowed lmvt_types ids to book on for acc_role>, ..], [...], ...],
-      "acc_partner_cat", [[<id of accounting partner category>, <string of accounting partner category name>, <description of accounting partner category>], [...], ...],
+      "acc_partner_cat":[[<id of accounting partner category>, <string of accounting partner category name>, <description of accounting partner category>], [...], ...],
   }",
   "sig": <64-bytes lowercase hex of the signature of the sha256 hash of the serialized event data, which is the same as the "id" field>
 }
