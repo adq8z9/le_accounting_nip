@@ -26,7 +26,6 @@ All events can be either kept private or be individually published publicly acco
 | `7701`        | accounting ledger entry               | 
 | `7702`        | accounting report                     | 
 | `37701`       | accounting ledger / journal           | 
-| `37702`       | accounting ledger / journal structure | 
 | `37703`       | accounting report template            | 
 
 | tag name              | value                                                                                            | other parameters                                                                                                      |
@@ -37,12 +36,8 @@ All events can be either kept private or be individually published publicly acco
 | `acc_unit_scale`      | Integer n of the factor 10^n for which holds (acc_amount / 10^n = amount in 'acc_unit' base)     | --                                                                                                                    | 
 | `acc_unit`            | Unit code for the acc_amount, e.g. ISO 4217-like codes for currency ('BTC'), but also sth like 'kg', or 'CO2Equ' might be thinkable | --                                                                                 | 
 | `acc_le_mvt_type`     | ledger movement id for le entry                                                                  | --                                                                                                                    | 
-| `acc_le_partner`      | accounting partner id for le entry                                                               | --                                                                                                                    | 
-| `acc_partner`         | id of accounting partner                                                                         | accounting partner name, description of accounting partner, accounting partner category id                            | 
-| `acc_laccount`        | ledger account id                                                                                | ledger account name, description of ledger account                                                                    | 
-| `acc_lmvt_type`       | ledger movement type id                                                                          | ledger movement type name, description of ledger movement type                                                        | 
-| `acc_role`            | accounting role id                                                                               | accounting role name, accounting role description, allowed laccounts to book on, allowed lmvt_types to book on        | 
-| `acc_partner_cat`     | accounting partner category                                                                      | accounting partner category name, description accounting partner category,                                            | 
+| `acc_le_partner_category`      | accounting partner id for le entry                                                               | --                                                                                                                    | 
+
 
 The other used kinds and tags are already defined in the main-NIPs and should be used with the values / parameters as defined there.
 
@@ -79,7 +74,7 @@ Multi-debit-muli-credit-transfers should be handled, if not divisible in single 
   ]
   "content":"{
       "description":<description of the posting>,
-      <more individually needed Meta-Data could be included (e.g. as specified in a kind 37702 accounting ledger / journal structure event). Format in a stringified JSON object (e.g.: "xy":<zz>,)
+      <more individually needed Meta-Data could be included (e.g. as specified in a kind 37702 accounting ledger / journal structure event). Format in the content field as a whole in a stringified JSON object (e.g. add new data element: "xy":<zz>,)>,
   }",
   "sig": <64-bytes lowercase hex of the signature of the sha256 hash of the serialized event data, which is the same as the "id" field>
 }
@@ -89,8 +84,8 @@ The structure ensures that debit and credits equal, if valid 'acc_le_debit_lacc'
 
 The movement-flow of the transfer can be normally interpreted as going from the 'acc_credit_lacc' (negative entry) to the 'acc_debit_lacc' (positive entry) account.  
 
-The following fields are used as described in the "content"-field:
-"description". 
+The following fields are used as described in the "content"-field:  
+`"description"`. 
 
 ## Accounting ledger / journal
 
