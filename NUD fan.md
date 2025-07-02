@@ -127,7 +127,7 @@ When updated backwards compatibility has to be ensured by the issuer.
 }
 ~~~
 
-The following fields are used as described in the "content"-field:
+The following fields are introduced and used as described in the "content"-field:  
 `"name"`, `"description"`, `"acc_units"`, `"acc_laccount_categories"`, `"acc_laccounts"`, `"acc_lmvt_type_categories"`, `"acc_lmvt_types"`, `"acc_roles"`, `"accountants"`, `"acc_partner_categories"`. 
 
 
