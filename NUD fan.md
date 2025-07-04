@@ -9,9 +9,6 @@ The target is financial accounting, but the data structure is more general and c
 
 In doubt and for everything not covered here one should refer to the other nostr-protocol specifications and the main-NIPs. 
 
-The underlying data-protocol for the (financial) accounting data is 'Nostr-agnostic' and specified in the 'fan01'ff.-Propoposals. 
-They are the "wrapped"/"implemented" in Nostr-events.
-
 ### Basic flow
 
 An entity wants to do accounting work. It creates an accounting ledger / journal event (kind 37701) for the specific accounting work. The ledger / journal event specifies the context for the specific accounting work to be done.
@@ -108,25 +105,29 @@ When updated backwards compatibility has to be ensured by the issuer.
       ["r", <relay for accounting work>],
       ...,
       ["r", <relay for accounting work>],
+      ["p", <pubkeys of below referenced allowed accountants for the ledger>],
+      ...
+      ["p", <pubkeys of below referenced allowed accountants for the ledger>]
   ],
   "content": "{
       "name":<name of accounting ledger / journal>,
       "description":<optional further description of the accounting ledger / journal>,
       "acc_units":[<Allowed unit code for transfers / entries, e.g. ISO 4217-like codes for currency ('BTC'), but also sth like 'kg', or 'CO2Equ' might be thinkable>, <allowed unit>, ...],
-      "acc_laccount_categories:[[<ledger account category id>, <string of ledger account category name>, <description of ledger account category>, <ledger account category id of parent category(ies))>], [...], ...],
-      "acc_laccounts":[[<ledger account id>, <string of ledger account name>, <description of ledger account>, <ledger account category id of parent category>], [...], ...],
-      "acc_lmvt_type_categories":[[<ledger movement type category id>, <string of ledger movement type category name>, <description of ledger movement type category>, <ledger movement type category id of parent category>], [...], ...],
-      "acc_lmvt_types":[[<ledger movement type id>, <string of ledger movement type name>, <description of ledger movement type>, <ledger movement type category id of parent category>], [...], ...],
-      "acc_roles":[[<account role id>, <string of accounting role name>, <description of accounting role>, [<allowed laccounts ids to book on for acc_role>, ...]], [<allowed lmvt_types ids to book on for acc_role>, ..], [...], ...],
+      "acc_laccount_categories":[{"id":<ledger account category id>, "name":<string of ledger account category name>, "description":<description of ledger account category>, "parent_id":[<ledger account category id of parent category>, ...]}, {...}, ...],
+      "acc_laccounts":[{"id":<ledger account id>, "name":<string of ledger account name>, "description":<description of ledger account>, "parent_id":[<ledger account category id of parent category>, ...]}, {...}, ...],
+      "acc_lmvt_type_categories":[{"id":<ledger movement type category id>, "name":<string of ledger movement type category name>, "description":<description of ledger movement type category>, "parent_id":[<ledger movement type category id of parent category>, ...]}, {...}, ...],
+      "acc_lmvt_types":[{"id":<ledger movement type id>, "name":<string of ledger movement type name>, "description":<description of ledger movement type>, "parent_id":[<ledger movement type category id of parent category>, ...]}, {...}, ...],
+      "acc_partner_categories":[{"id":<ledger accounting partner category id>, "name":<string of ledger accounting partner category name>, "description":<description of ledger accounting partner category>, "parent_id":[<ledger accounting partner category id of parent category>, ...]}, {...}, ...],
+      "acc_partners":[{"id":<ledger accounting partner id>, "name":<string of ledger accounting partner name>, "description":<description of ledger accounting partner>, "parent_id":[<ledger accounting partner category id of parent category>, ...]}, {...}, ...],
+      "acc_roles":[{"id":<ledger accounting role id>, "name":<string of ledger accounting role name>, "description":<description of ledger accounting role>, "Allowed_acc":[<allowed laccounts ids to book on for acc_role>, ...], "Allowed_mvt":[<allowed lmvt_types ids to book on for acc_role>, ..], "Allowed_part":[<allowed acc partner ids to book on for acc role>,...]}, {...}, ...],
       "accountants":[[<pubkey>, <accounting role id>], [...], ...],
-      "acc_partner_categories":[[<id of accounting partner category>, <string of accounting partner category name>, <description of accounting partner category>, <accounting partner category id of parent category>], [...], ...],
   }",
   "sig": <64-bytes lowercase hex of the signature of the sha256 hash of the serialized event data, which is the same as the "id" field>
 }
 ~~~
 
 The following fields are introduced and used as described in the "content"-field:  
-`"name"`, `"description"`, `"acc_units"`, `"acc_laccount_categories"`, `"acc_laccounts"`, `"acc_lmvt_type_categories"`, `"acc_lmvt_types"`, `"acc_roles"`, `"accountants"`, `"acc_partner_categories"`. 
+`"name"`, `"description"`, `"acc_units"`, `"acc_laccount_categories"`, `"acc_laccounts"`, `"acc_lmvt_type_categories"`, `"acc_lmvt_types"`, `"acc_partner_categories"`, `"acc_partners"`, `"acc_roles"`, `"accountants"`. 
 
 
 ## Accounting report
