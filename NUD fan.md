@@ -9,11 +9,14 @@ The target is financial accounting, but the data structure is more general and c
 
 In doubt and for everything not covered here one should refer to the other nostr-protocol specifications and the main-NIPs. 
 
+The underlying data-protocol for the (financial) accounting data is 'Nostr-agnostic' and specified in the 'fan01'ff.-Propoposals. 
+They are the "wrapped"/"implemented" in Nostr-events.
+
 ### Basic flow
 
-An entity wants to do accounting work. It creates an accounting ledger / journal event (kind 37701) for the specific accounting work. The ledger / journal event specifies the rules for the specific accounting work to be done.
+An entity wants to do accounting work. It creates an accounting ledger / journal event (kind 37701) for the specific accounting work. The ledger / journal event specifies the context for the specific accounting work to be done.
 
-The kind 37701 is fetched by, or submitted to, the accountants who have the assigned accounting roles in the 37701-event (could also be bots or similar). They can create accounting ledger / journal entry events (kind 7701) based on these.
+The kind 37701 is fetched by, or submitted to, the accountants (could also be bots or similar) who have the assigned accounting roles in the 37701-event. They can create accounting ledger / journal entry events (kind 7701) based on these.
 
 When the work is done, or just inbetween, the entity (or someone else) can create a accounting report (kind 7702) based on a reporting template event (kind 37703) (or freely) and the ledger event as well as ledger entry events. The kind 37703 can either be created by someone other (e.g. a standard setter, etc.), or individually designed by the entity. The accounting report (kind 7702) can be used for external or internal reporting purposes and should be auditable against the underlying event data. Data visualisations and/or ad-hoc reports could also be implemented by clients without a report event, e.g. just for monitoring purposes.
 
@@ -186,7 +189,7 @@ Even if full public accounting on nostr probably doesn't make sense in most case
 Also this NUD might have use cases in combination with other NIPs/NUDs.
 E.g. 
 - Relaying batch transations between different sub-systems over nostr relays (as interface) (if needed in a gift wrap) (?)
-- Accounting in a NIP-29 relay-based private group (?)
+- Accounting in a NIP-29 relay-based private group, or in general on a private relay (?)
 - An accounting report event could be timestamped and covered by an attestation event
 - (...?)
 
