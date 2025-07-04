@@ -105,6 +105,9 @@ When updated backwards compatibility has to be ensured by the issuer.
       ["r", <relay for accounting work>],
       ...,
       ["r", <relay for accounting work>],
+      ["server", <reference to blossom file storage server or NIP 96 file storage server for accounting work>],
+      ...
+      ["server", <reference to blossom file storage server or NIP 96 file storage server for accounting work>],
       ["p", <pubkeys of below referenced allowed accountants for the ledger>],
       ...
       ["p", <pubkeys of below referenced allowed accountants for the ledger>]
