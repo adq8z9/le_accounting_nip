@@ -62,7 +62,7 @@ Multi-debit-muli-credit-transfers should be handled, if not divisible in single 
     "debit_account": <ledger account id from above specified accounting ledger / journal event reference>,
     "credit_account", <ledger account id from above specified accounting ledger / journal event reference>,
     "acc_amount": {"amount":<Integer amount of the transfer in the unit and scale provided in this object>, "scale":<Integer n of the factor 10^n for which holds (acc_amount-field / 10^n = amount in 'acc_unit' base)>, "unit", <Unit code for the transfer; The allowed unit codes are specified in the accounting ledger event referenced avove> },
-    "mvt_type": <ledger movement type id from avove specified accounting ledger / journal event reference>,
+    "acc_mvt_type": <ledger movement type id from avove specified accounting ledger / journal event reference>,
     "acc_partner": <id of accounting partner category of transaction>],
     "description": <description of the posting>,
     <more individually needed Data could be included (e.g. add new data element: "xy":<zz>,)>,
