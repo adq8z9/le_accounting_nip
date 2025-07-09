@@ -11,13 +11,11 @@ In doubt and for everything not covered here one should refer to the other nostr
 
 ### Basic flow
 
-An entity wants to do accounting work. It creates an accounting ledger / journal event (kind 37701) for the specific accounting work. The ledger / journal event specifies the context for the specific accounting work to be done.
+An entity wants to do accounting work. It creates an accounting ledger / journal event (kind `37701`) for the specific accounting work. The ledger / journal event specifies the context for the specific accounting work to be done.
 
-The kind 37701 is fetched by, or submitted to, the accountants (could also be bots or similar) who have assigned accounting roles in the 37701-event. They can create accounting ledger / journal entry events (kind 7701) based on these.
+The kind `37701`-event is fetched by, or submitted to, the accountants (could also be bots or similar) who have assigned accounting roles in the `37701`-event. They can create accounting ledger / journal entry events (kind `7701`) based on these.
 
-When the work is done, or interim, an accounting report event (kind 7702) can be published. The accounting report (kind 7702) can be used for external or internal reporting purposes and should be auditable against the underlying event data. Data visualisations and/or ad-hoc reports should also be implemented by clients without a report event, e.g. just for monitoring purposes.
-
-All events could be in combination with other NIPs either kept private or be individually published publicly according to preference.
+When the work is done, or interim, an accounting report event (kind `7702`) can be published. The accounting report (kind `7702`) can be used for external or internal reporting purposes and should be auditable against the underlying event data. Data visualisations and/or ad-hoc reports should also be implemented by clients without a report event, e.g. just for monitoring purposes.
 
 ### The following new kinds and tags are introduced in this NUD
 
