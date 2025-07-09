@@ -114,7 +114,7 @@ When updated backwards compatibility has to be ensured by the issuer.
       "acc_partner_categories":[{"id":<ledger accounting partner category id>, "name":<string of ledger accounting partner category name>, "description":<description of ledger accounting partner category>, "parent_id":[<ledger accounting partner category id of parent category>, ...]}, {...}, ...],
       "acc_partners":[{"id":<ledger accounting partner id>, "name":<string of ledger accounting partner name>, "description":<description of ledger accounting partner>, "parent_id":[<ledger accounting partner category id of parent category>, ...]}, {...}, ...],
       "acc_roles":[{"id":<ledger accounting role id>, "name":<string of ledger accounting role name>, "description":<description of ledger accounting role>, "Allowed_acc":[<allowed laccounts ids to book on for acc_role>, ...], "Allowed_mvt":[<allowed lmvt_types ids to book on for acc_role>, ..], "Allowed_par":[<allowed acc partner ids to book on for acc role>,...]}, {...}, ...],
-      "accountants":[[<pubkey>, <accounting role id>], [...], ...],
+      "acc_accountants":[[<pubkey>, <accounting role id>], [...], ...],
       <more individually needed Data could be included (e.g. add new data element: "xy":<zz>,)>,
   }",
   "sig": <64-bytes lowercase hex of the signature of the sha256 hash of the serialized event data, which is the same as the "id" field>
