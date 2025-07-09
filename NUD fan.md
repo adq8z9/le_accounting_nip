@@ -25,7 +25,7 @@ When the work is done, or interim, an accounting report event (kind `7702`) can 
 | `7702`        | accounting report                     | 
 | `37701`       | accounting ledger / journal           | 
 
-The other used kinds and tags are already defined in the main-NIPs and should be used with the values / parameters as defined there.
+The other used kinds and tags are already defined in the main-NIPs and should be used with the values / parameters as defined there.  
 The relevant new internal data-fields are stored in the content-field of the events.
 
 ## Accounting ledger / journal entry
