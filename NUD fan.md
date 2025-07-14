@@ -28,6 +28,53 @@ When the work is done, or interim, an accounting report event (kind `7702`) can 
 The other used kinds and tags are already defined in the main-NIPs and should be used with the values / parameters as defined there.  
 The relevant new internal data-fields are stored in the content-field of the events.
 
+## Accounting ledger
+
+Represents ledger for which the accounting is to be done. 
+
+When updated backwards compatibility has to be ensured by the issuer.
+
+**Format of accounting ledger event:**
+~~~
+{
+  "id": <32-bytes lowercase hex-encoded sha256 of the serialized posting data>,
+  "pubkey": <32-bytes lowercase hex-encoded public key of the event creator>,
+  "created_at": <unix timestamp in seconds>,
+  "kind": 37701, // as defined in NIP-01 a addressable kind-number is used for this event-type
+  "tags": [
+      ["d", <identifier for accounting ledger>],
+      ["r", <relay for accounting work>],
+      ...,
+      ["r", <relay for accounting work>],
+      ["server", <reference to blossom file storage server or NIP 96 file storage server for accounting work>],
+      ...
+      ["server", <reference to blossom file storage server or NIP 96 file storage server for accounting work>],
+      ["p", <pubkeys of below referenced allowed accountants for the ledger>],
+      ...
+      ["p", <pubkeys of below referenced allowed accountants for the ledger>],
+      //if needed more of the content field fields could be moved into the tags
+  ],
+  "content": "{
+      "name":<name of accounting ledger>,
+      "description":<optional further description of the accounting ledger>,
+      "acc_units":[<Allowed unit code for entries, e.g. ISO 4217-like codes for currency ('BTC'), but also sth like 'kg', or 'CO2Equ' might be thinkable>, <allowed unit>, ...],
+      "acc_account_categories":[{"id":<ledger account category id>, "name":<string of ledger account category name>, "description":<description of ledger account category>, "parent_id":[<ledger account category id of parent category>, ...]}, {...}, ...],
+      "acc_accounts":[{"id":<ledger account id>, "name":<string of ledger account name>, "description":<description of ledger account>, "parent_id":[<ledger account category id of parent category>, ...]}, {...}, ...],
+      "acc_mvt_type_categories":[{"id":<ledger movement type category id>, "name":<string of ledger movement type category name>, "description":<description of ledger movement type category>, "parent_id":[<ledger movement type category id of parent category>, ...]}, {...}, ...],
+      "acc_mvt_types":[{"id":<ledger movement type id>, "name":<string of ledger movement type name>, "description":<description of ledger movement type>, "parent_id":[<ledger movement type category id of parent category>, ...]}, {...}, ...],
+      "acc_partner_categories":[{"id":<ledger accounting partner category id>, "name":<string of ledger accounting partner category name>, "description":<description of ledger accounting partner category>, "parent_id":[<ledger accounting partner category id of parent category>, ...]}, {...}, ...],
+      "acc_partners":[{"id":<ledger accounting partner id>, "name":<string of ledger accounting partner name>, "description":<description of ledger accounting partner>, "parent_id":[<ledger accounting partner category id of parent category>, ...]}, {...}, ...],
+      "acc_roles":[{"id":<ledger accounting role id>, "name":<string of ledger accounting role name>, "description":<description of ledger accounting role>, "Allowed_acc":[<allowed laccounts ids to book on for acc_role>, ...], "Allowed_mvt":[<allowed lmvt_types ids to book on for acc_role>, ..], "Allowed_par":[<allowed acc partner ids to book on for acc role>,...]}, {...}, ...],
+      "acc_accountants":[[<pubkey>, <accounting role id>], [...], ...],
+      <more individually needed Data could be included (e.g. add new data element: "xy":<zz>,)>,
+  }",
+  "sig": <64-bytes lowercase hex of the signature of the sha256 hash of the serialized event data, which is the same as the "id" field>
+}
+~~~
+
+The following fields are introduced and used as described in the "content"-field:  
+`"name"`, `"description"`, `"acc_units"`, `"acc_account_categories"`, `"acc_accounts"`, `"acc_mvt_type_categories"`, `"acc_mvt_types"`, `"acc_partner_categories"`, `"acc_partners"`, `"acc_roles"`, `"accountants"`. 
+
 ## Accounting ledger entry
 
 This describe the structure for a debit-credit-ledger-entry.  
@@ -76,54 +123,6 @@ The movement-flow of the transfer can be normally interpreted as going from the 
 
 The following fields are used as described in the "content"-field:  
 `"debit_account"`, `"credit_account"`, `"acc_amount"`, `"mvt_type"`, `"acc_partner"`, `"description"`. 
-
-## Accounting ledger
-
-Represents ledger for which the accounting is to be done. 
-
-When updated backwards compatibility has to be ensured by the issuer.
-
-**Format of accounting ledger event:**
-~~~
-{
-  "id": <32-bytes lowercase hex-encoded sha256 of the serialized posting data>,
-  "pubkey": <32-bytes lowercase hex-encoded public key of the event creator>,
-  "created_at": <unix timestamp in seconds>,
-  "kind": 37701, // as defined in NIP-01 a addressable kind-number is used for this event-type
-  "tags": [
-      ["d", <identifier for accounting ledger>],
-      ["r", <relay for accounting work>],
-      ...,
-      ["r", <relay for accounting work>],
-      ["server", <reference to blossom file storage server or NIP 96 file storage server for accounting work>],
-      ...
-      ["server", <reference to blossom file storage server or NIP 96 file storage server for accounting work>],
-      ["p", <pubkeys of below referenced allowed accountants for the ledger>],
-      ...
-      ["p", <pubkeys of below referenced allowed accountants for the ledger>],
-      //if needed more of the content field fields could be moved into the tags
-  ],
-  "content": "{
-      "name":<name of accounting ledger>,
-      "description":<optional further description of the accounting ledger>,
-      "acc_units":[<Allowed unit code for entries, e.g. ISO 4217-like codes for currency ('BTC'), but also sth like 'kg', or 'CO2Equ' might be thinkable>, <allowed unit>, ...],
-      "acc_account_categories":[{"id":<ledger account category id>, "name":<string of ledger account category name>, "description":<description of ledger account category>, "parent_id":[<ledger account category id of parent category>, ...]}, {...}, ...],
-      "acc_accounts":[{"id":<ledger account id>, "name":<string of ledger account name>, "description":<description of ledger account>, "parent_id":[<ledger account category id of parent category>, ...]}, {...}, ...],
-      "acc_mvt_type_categories":[{"id":<ledger movement type category id>, "name":<string of ledger movement type category name>, "description":<description of ledger movement type category>, "parent_id":[<ledger movement type category id of parent category>, ...]}, {...}, ...],
-      "acc_mvt_types":[{"id":<ledger movement type id>, "name":<string of ledger movement type name>, "description":<description of ledger movement type>, "parent_id":[<ledger movement type category id of parent category>, ...]}, {...}, ...],
-      "acc_partner_categories":[{"id":<ledger accounting partner category id>, "name":<string of ledger accounting partner category name>, "description":<description of ledger accounting partner category>, "parent_id":[<ledger accounting partner category id of parent category>, ...]}, {...}, ...],
-      "acc_partners":[{"id":<ledger accounting partner id>, "name":<string of ledger accounting partner name>, "description":<description of ledger accounting partner>, "parent_id":[<ledger accounting partner category id of parent category>, ...]}, {...}, ...],
-      "acc_roles":[{"id":<ledger accounting role id>, "name":<string of ledger accounting role name>, "description":<description of ledger accounting role>, "Allowed_acc":[<allowed laccounts ids to book on for acc_role>, ...], "Allowed_mvt":[<allowed lmvt_types ids to book on for acc_role>, ..], "Allowed_par":[<allowed acc partner ids to book on for acc role>,...]}, {...}, ...],
-      "acc_accountants":[[<pubkey>, <accounting role id>], [...], ...],
-      <more individually needed Data could be included (e.g. add new data element: "xy":<zz>,)>,
-  }",
-  "sig": <64-bytes lowercase hex of the signature of the sha256 hash of the serialized event data, which is the same as the "id" field>
-}
-~~~
-
-The following fields are introduced and used as described in the "content"-field:  
-`"name"`, `"description"`, `"acc_units"`, `"acc_account_categories"`, `"acc_accounts"`, `"acc_mvt_type_categories"`, `"acc_mvt_types"`, `"acc_partner_categories"`, `"acc_partners"`, `"acc_roles"`, `"accountants"`. 
-
 
 ## Accounting report
 
