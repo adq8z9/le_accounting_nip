@@ -92,10 +92,11 @@ Multi-debit-muli-credit-transfers should be handled, if not divisible in single 
   "kind": 7701, // as defined in NIP-01 a regular kind-number is used for this event-type
   "tags": [
     ["A", <reference to adressable accounting ledger event (kind 37701), for which is booked>],
-    ["I", "accounting:fan:<id of debit account id from content field>],
-    ["I", "accounting:fan:<id of credit account id from content field>],
-    ["I", "accounting:fan:<id of movement type id from content field>],
-    ["I", "accounting:fan:<id of acc partner id from content field>],
+    ["L", <reference to adressable accounting ledger event (kind 37701), for which is booked>],
+    ["l", "account:<id of debit account id from content field>", <reference to adressable accounting ledger event (kind 37701), for which is booked>],
+    ["l", "account:<id of credit account id from content field>", <reference to adressable accounting ledger event (kind 37701), for which is booked>],
+    ["l", "mvt_type:<id of movement type id from content field>", <reference to adressable accounting ledger event (kind 37701), for which is booked>],
+    ["l", "partner:<id of acc partner id from content field>", <reference to adressable accounting ledger event (kind 37701), for which is booked>],
     ["published_at", <unix timestamp in seconds>], // timestamp at which the event was published
     //in the following optional references to supporting documents for the entry can be included
     ["i", <external content IDs which are supporting documents for the posting according to NIP-73>],
@@ -140,6 +141,7 @@ A accounting report event could be timestamped and covered by an attestation eve
   "tags": [
       ["name", <name of accounting report>],
       ["description", <optional further description of the accounting report>],
+      ["A", <reference to adressable accounting ledger event (kind 37701), for which is reported>],
       //report file
       ["IMETA", <imeta tag according to NIP-92>, "report"], // or
       ["E", <reference to a kind 1063 media event according to NIP-94>, "report"],
