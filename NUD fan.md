@@ -2,7 +2,7 @@
 
 (Financial) accounting on nostr.
 
-## Pre Notes
+## Pre Note
 
 This implementation proposal introduces an on nostr events based form for exchanging (financial) accounting data.  
 The target is financial accounting, but the data structure is more general and could be also used for other forms of accounting.
@@ -156,7 +156,7 @@ A accounting report event could be timestamped and covered by an attestation eve
 
 ## More implementation considerations
 
-Even if full public accounting on nostr probably doesn't make sense in most cases, there might be some other use cases.
+Even if full public accounting on nostr probably doesn't make sense in most cases, there might be some other use cases besides.  
 Also this NUD might have use cases in combination with other NIPs/NUDs.
 E.g. 
 - Relaying batch transations between different sub-systems over nostr relays (as interface or aggregator) (if needed in a gift wrap) (?)
