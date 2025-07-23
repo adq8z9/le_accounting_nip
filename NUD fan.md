@@ -110,7 +110,7 @@ Multi-debit-muli-credit-transfers should be handled, if not divisible in single 
     "credit_account", <ledger account id from above specified accounting ledger event reference>,
     "acc_amount": [<Integer amount of the transfer in the unit and scale provided in this object>, <Integer n of the factor 10^n for which holds (acc_amount-field / 10^n = amount in 'acc_unit' base)>, <Unit code for the transfer; The allowed unit codes are specified in the accounting ledger event referenced avove>],
     "acc_mvt_type": <ledger movement type id from avove specified accounting ledger event reference>,
-    "acc_partner": <id of accounting partner of transaction from above specified accounting ledger event reference>],
+    "acc_partner": <id of accounting partner of transaction from above specified accounting ledger event reference>,
     "description": <description of the posting>,
     <more individually needed Data could be included (e.g. add new data element: "xy":<zz>,)>,
   }",
