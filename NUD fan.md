@@ -92,11 +92,12 @@ Multi-debit-muli-credit-transfers should be handled, if not divisible in single 
   "kind": 7701, // as defined in NIP-01 a regular kind-number is used for this event-type
   "tags": [
     ["A", <reference to adressable accounting ledger event (kind 37701), for which is booked>],
-    ["L", <reference to adressable accounting ledger event (kind 37701), for which is booked>],
-    ["l", "account:<id of debit account id from content field>", <reference to adressable accounting ledger event (kind 37701), for which is booked>],
-    ["l", "account:<id of credit account id from content field>", <reference to adressable accounting ledger event (kind 37701), for which is booked>],
-    ["l", "mvt_type:<id of movement type id from content field>", <reference to adressable accounting ledger event (kind 37701), for which is booked>],
-    ["l", "partner:<id of acc partner id from content field>", <reference to adressable accounting ledger event (kind 37701), for which is booked>],
+    // remark for the namespace labels: It may also be feasible/useful, to account for a namespace outside a nostr-ledger-event, e.g. a fixed namespace ("example-url.ledger"), which is not personally fitted. Than accounting without a 37701-event could also be done.
+    ["L", <reference to adressable accounting ledger event (kind 37701), for which is booked; alternatively other namespace outside a nostr-ledger-event>],
+    ["l", "account:<id of debit account id from content field>", <reference to adressable accounting ledger event (kind 37701), for which is booked; alternatively other namespace outside a nostr-ledger-event>],
+    ["l", "account:<id of credit account id from content field>", <reference to adressable accounting ledger event (kind 37701), for which is booked; alternatively other namespace outside a nostr-ledger-event>],
+    ["l", "mvt_type:<id of movement type id from content field>", <reference to adressable accounting ledger event (kind 37701), for which is booked; alternatively other namespace outside a nostr-ledger-event>],
+    ["l", "partner:<id of acc partner id from content field>", <reference to adressable accounting ledger event (kind 37701), for which is booked; alternatively other namespace outside a nostr-ledger-event>],
     ["published_at", <unix timestamp in seconds>], // timestamp at which the event was published
     //in the following optional references to supporting documents for the entry can be included
     ["i", <external content IDs which are supporting documents for the posting according to NIP-73>],
