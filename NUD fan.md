@@ -43,6 +43,9 @@ When updated backwards compatibility has to be ensured by the issuer.
   "kind": 37701, // as defined in NIP-01 a addressable kind-number is used for this event-type
   "tags": [
       ["d", <identifier for accounting ledger>],
+      // remark for this namespace labels: with it, in the future, the kind number could be potentially used for additional 'ledger-meta-data-events' if needed.
+      ["L", "nostr.leaccountingnip"],
+      ["l", "ledger", "nostr.leaccountingnip"],
       ["r", <relay for accounting work>],
       ...,
       ["r", <relay for accounting work>],
@@ -64,8 +67,10 @@ When updated backwards compatibility has to be ensured by the issuer.
       "acc_mvt_types":[{"id":<ledger movement type id>, "name":<string of ledger movement type name>, "description":<description of ledger movement type>, "parent_id":[<ledger movement type category id of parent category>, ...]}, {...}, ...],
       "acc_partner_categories":[{"id":<ledger accounting partner category id>, "name":<string of ledger accounting partner category name>, "description":<description of ledger accounting partner category>, "parent_id":[<ledger accounting partner category id of parent category>, ...]}, {...}, ...],
       "acc_partners":[{"id":<ledger accounting partner id>, "name":<string of ledger accounting partner name>, "description":<description of ledger accounting partner>, "parent_id":[<ledger accounting partner category id of parent category>, ...]}, {...}, ...],
-      "acc_roles":[{"id":<ledger accounting role id>, "name":<string of ledger accounting role name>, "description":<description of ledger accounting role>, "Allowed_acc":[<allowed laccounts ids to book on for acc_role>, ...], "Allowed_mvt":[<allowed lmvt_types ids to book on for acc_role>, ..], "Allowed_par":[<allowed acc partner ids to book on for acc role>,...]}, {...}, ...],
+      "acc_roles":[{"id":<ledger accounting role id>, "name":<string of ledger accounting role name>, "description":<description of ledger accounting role>, }, {...}, ...],
       "acc_accountants":[[<pubkey>, <accounting role id>], [...], ...],
+      "acc_rule_categories":[{"id":<ledger accounting rule category id>, "name":<string of ledger accounting rule category name>, "description":<description of ledger accounting rule category>, "parent_id":[<ledger accounting rule category id of parent category>, ...]}, {...}, ...],
+      "acc_rule":[{"id":<ledger accounting rule id>, "name":<string of ledger accounting rule name>, "description":<description of ledger accounting rule>, "parent_id":[<ledger accounting rule category id of parent category>, ...], "rules":[<tbd, sth where you could specify, e.g. accountant or accountant role xy can just book on accounts yz, etc.>,...]}, {...}, ...],
       <more individually needed Data could be included (e.g. add new data element: "xy":<zz>,)>,
   }",
   "sig": <64-bytes lowercase hex of the signature of the sha256 hash of the serialized event data, which is the same as the "id" field>
@@ -92,12 +97,15 @@ Multi-debit-muli-credit-transfers should be handled, if not divisible in single 
   "kind": 7701, // as defined in NIP-01 a regular kind-number is used for this event-type
   "tags": [
     ["A", <reference to adressable accounting ledger event (kind 37701), for which is booked>],
-    // remark for the namespace labels: It may also be feasible/useful, to account for a namespace outside a nostr-ledger-event, e.g. a fixed namespace ("example-url.ledger"), which is not personally fitted. Than accounting without a 37701-event could also be done.
+    // remark for this namespace labels: It may also be feasible/useful, to account for a namespace outside a nostr-ledger-event, e.g. a fixed namespace ("example-url.ledger"), which is not personally fitted. Than accounting without a 37701-event could also be done.
     ["L", <reference to adressable accounting ledger event (kind 37701), for which is booked; alternatively other namespace outside a nostr-ledger-event>],
     ["l", "account:<id of debit account id from content field>", <reference to adressable accounting ledger event (kind 37701), for which is booked; alternatively other namespace outside a nostr-ledger-event>],
     ["l", "account:<id of credit account id from content field>", <reference to adressable accounting ledger event (kind 37701), for which is booked; alternatively other namespace outside a nostr-ledger-event>],
     ["l", "mvt_type:<id of movement type id from content field>", <reference to adressable accounting ledger event (kind 37701), for which is booked; alternatively other namespace outside a nostr-ledger-event>],
     ["l", "partner:<id of acc partner id from content field>", <reference to adressable accounting ledger event (kind 37701), for which is booked; alternatively other namespace outside a nostr-ledger-event>],
+    // remark for this namespace labels: with it, in the future, the kind number could be potentially used for additional 'ledger-entry-data-events' if needed.
+    ["L", "nostr.leaccountingnip"],
+    ["l", "ledgerentry", "nostr.leaccountingnip"],
     ["published_at", <unix timestamp in seconds>], // timestamp at which the event was published
     //in the following optional references to supporting documents for the entry can be included
     ["i", <external content IDs which are supporting documents for the posting according to NIP-73>],
@@ -143,6 +151,9 @@ A accounting report event could be timestamped and covered by an attestation eve
       ["name", <name of accounting report>],
       ["description", <optional further description of the accounting report>],
       ["A", <reference to adressable accounting ledger event (kind 37701), for which is reported>],
+      // remark for this namespace labels: with it, in the future, the kind number could be potentially used for additional 'ledger-report-events' if needed.
+      ["L", "nostr.leaccountingnip"],
+      ["l", "report", "nostr.leaccountingnip"],
       //report file
       ["IMETA", <imeta tag according to NIP-92>, "report"], // or
       ["E", <reference to a kind 1063 media event according to NIP-94>, "report"],
@@ -162,8 +173,11 @@ A accounting report event could be timestamped and covered by an attestation eve
 Even if full public accounting on nostr probably doesn't make sense in most cases, there might be some other use cases besides.  
 Also this NUD might have use cases in combination with other NIPs/NUDs.
 E.g. 
-- Relaying batch transations between different sub-systems over nostr relays (as interface or aggregator) (if needed in a gift wrap) (?)
-- Accounting in a NIP-29 relay-based private group, or in general on a private relay (?)
+- Relaying batch transations between different sub-systems over nostr relays (as interface or aggregator) (if needed in a gift wrap)
+- Accounting in a NIP-29 relay-based private group, or in general on a private relay
+- Decentralized public accounting (e.g. for public organization or where you would want this level of public accounting)
+- Similar app to 'Splitwise', where you split expenses in a group
+- For NIP 60 Spending History Event for ecash wallet on nostr
 - An accounting report event could be timestamped and covered by an attestation event
 - (...?)
 
