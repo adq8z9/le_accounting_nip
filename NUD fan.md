@@ -44,7 +44,7 @@ When updated backwards compatibility has to be ensured by the issuer.
   "tags": [
       ["d", <identifier for accounting ledger>],
       // remark for this namespace labels: with it, in the future, the kind number could be potentially used for additional 'ledger-meta-data-events' if needed.
-      ["L", "nostr.leaccountingnip"],
+      ["L", "leaccountingnip"],
       ["l", "ledger", "nostr.leaccountingnip"],
       ["r", <relay for accounting work>],
       ...,
