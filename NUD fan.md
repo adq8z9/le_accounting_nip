@@ -4,7 +4,7 @@
 
 ## Pre Note
 
-This implementation proposal introduces an on nostr events based form for exchanging (financial) accounting data.  
+This implementation proposal introduces a nostr events based form for exchanging (financial) accounting data.  
 The target is financial accounting, but the data structure is more general and could be also used for other forms of accounting.
 
 In doubt and for everything not covered here one should refer to the other nostr-protocol specifications and the main-NIPs. 
