@@ -104,8 +104,8 @@ Multi-debit-muli-credit-transfers should be handled, if not divisible in single 
     ["l", "mvt_type:<id of movement type id from content field>", <reference to adressable accounting ledger event (kind 37701), for which is booked; alternatively other namespace outside a nostr-ledger-event>],
     ["l", "partner:<id of acc partner id from content field>", <reference to adressable accounting ledger event (kind 37701), for which is booked; alternatively other namespace outside a nostr-ledger-event>],
     // remark for this namespace labels: with it, in the future, the kind number could be potentially used for additional 'ledger-entry-data-events' if needed.
-    ["L", "nostr.leaccountingnip"],
-    ["l", "ledgerentry", "nostr.leaccountingnip"],
+    ["L", "leaccountingnip"],
+    ["l", "ledgerentry", "leaccountingnip"],
     ["published_at", <unix timestamp in seconds>], // timestamp at which the event was published
     //in the following optional references to supporting documents for the entry can be included
     ["i", <external content IDs which are supporting documents for the posting according to NIP-73>],
