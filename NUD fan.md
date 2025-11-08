@@ -67,10 +67,10 @@ When updated backwards compatibility has to be ensured by the issuer.
       "acc_mvt_types":[{"id":<ledger movement type id>, "name":<string of ledger movement type name>, "description":<description of ledger movement type>, "parent_id":[<ledger movement type category id of parent category>, ...]}, {...}, ...],
       "acc_partner_categories":[{"id":<ledger accounting partner category id>, "name":<string of ledger accounting partner category name>, "description":<description of ledger accounting partner category>, "parent_id":[<ledger accounting partner category id of parent category>, ...]}, {...}, ...],
       "acc_partners":[{"id":<ledger accounting partner id>, "name":<string of ledger accounting partner name>, "description":<description of ledger accounting partner>, "parent_id":[<ledger accounting partner category id of parent category>, ...]}, {...}, ...],
-      "acc_roles":[{"id":<ledger accounting role id>, "name":<string of ledger accounting role name>, "description":<description of ledger accounting role>, }, {...}, ...],
-      "acc_accountants":[[<pubkey>, <accounting role id>], [...], ...],
+      "acc_accountant_roles":[{"id":<ledger accounting accountant role id>, "name":<string of ledger accounting accountant role name>, "description":<description of ledger accounting accountant role>, "parent_id":[<ledger accounting accountant role id of parent category>, ...]}, {...}, ...],
+      "acc_accountants":[{"id":<accountant id>, "name":<string of accountant name>, "description":<description of accountant>, "parent_id":[<ledger accounting accountant role id of parent category>, ...], "pubkey":<accountant pubkey>}, {...}, ...],
       "acc_rule_categories":[{"id":<ledger accounting rule category id>, "name":<string of ledger accounting rule category name>, "description":<description of ledger accounting rule category>, "parent_id":[<ledger accounting rule category id of parent category>, ...]}, {...}, ...],
-      "acc_rule":[{"id":<ledger accounting rule id>, "name":<string of ledger accounting rule name>, "description":<description of ledger accounting rule>, "parent_id":[<ledger accounting rule category id of parent category>, ...], "rules":[<tbd, sth where you could specify, e.g. accountant or accountant role xy can just book on accounts yz, etc.>,...]}, {...}, ...],
+      "acc_rules":[{"id":<ledger accounting rule id>, "name":<string of ledger accounting rule name>, "description":<description of ledger accounting rule>, "parent_id":[<ledger accounting rule category id of parent category>, ...], "rule":[<tbd, sth where you could specify, e.g. accountant or accountant role xy can just book on accounts yz, etc.>,...]}, {...}, ...],
       <more individually needed Data could be included (e.g. add new data element: "xy":<zz>,)>,
   }",
   "sig": <64-bytes lowercase hex of the signature of the sha256 hash of the serialized event data, which is the same as the "id" field>
@@ -78,7 +78,7 @@ When updated backwards compatibility has to be ensured by the issuer.
 ~~~
 
 The following fields are introduced and used as described in the "content"-field:  
-`"name"`, `"description"`, `"acc_units"`, `"acc_account_categories"`, `"acc_accounts"`, `"acc_mvt_type_categories"`, `"acc_mvt_types"`, `"acc_partner_categories"`, `"acc_partners"`, `"acc_roles"`, `"accountants"`. 
+`"name"`, `"description"`, `"acc_units"`, `"acc_account_categories"`, `"acc_accounts"`, `"acc_mvt_type_categories"`, `"acc_mvt_types"`, `"acc_partner_categories"`, `"acc_partners"`, `"acc_accountant_roles"`, `"acc_accountants"`, `"acc_rule_categories"`, `"acc_rules"`. 
 
 ## Accounting ledger entry
 
