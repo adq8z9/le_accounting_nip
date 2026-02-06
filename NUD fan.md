@@ -42,7 +42,7 @@ When updated backwards compatibility has to be ensured by the issuer.
   "created_at": <unix timestamp in seconds>,
   "kind": 37701, // as defined in NIP-01 a addressable kind-number is used for this event-type
   "tags": [
-      ["d", <identifier for accounting ledger>],
+      ["d", <identifier for accounting ledger, should be equal to "id" field for accounting ledger below>],
       // remark for this namespace labels: with it, in the future, the kind number could be potentially used for additional 'ledger-meta-data-events' if needed.
       ["L", "leaccountingnip"],
       ["l", "ledger", "leaccountingnip"],
@@ -60,6 +60,7 @@ When updated backwards compatibility has to be ensured by the issuer.
   "content": "{
       "name":<name of accounting ledger>,
       "description":<optional further description of the accounting ledger>,
+      "parent_id":[<accounting ledger id of parent ledger>, ...],
       "acc_units":[<Allowed unit code for entries, e.g. ISO 4217-like codes for currency ('BTC'), but also sth like 'kg', or 'CO2Equ' might be thinkable>, <allowed unit>, ...],
       "acc_account_categories":[{"id":<ledger account category id>, "name":<string of ledger account category name>, "description":<description of ledger account category>, "parent_id":[<ledger account category id of parent category>, ...]}, {...}, ...],
       "acc_accounts":[{"id":<ledger account id>, "name":<string of ledger account name>, "description":<description of ledger account>, "parent_id":[<ledger account category id of parent category>, ...]}, {...}, ...],
@@ -68,7 +69,7 @@ When updated backwards compatibility has to be ensured by the issuer.
       "acc_partner_categories":[{"id":<ledger accounting partner category id>, "name":<string of ledger accounting partner category name>, "description":<description of ledger accounting partner category>, "parent_id":[<ledger accounting partner category id of parent category>, ...]}, {...}, ...],
       "acc_partners":[{"id":<ledger accounting partner id>, "name":<string of ledger accounting partner name>, "description":<description of ledger accounting partner>, "parent_id":[<ledger accounting partner category id of parent category>, ...]}, {...}, ...],
       "acc_accountant_categories":[{"id":<ledger accounting accountant category id>, "name":<string of ledger accounting accountant category name>, "description":<description of ledger accounting accountant category>, "parent_id":[<ledger accounting accountant category id of parent category>, ...]}, {...}, ...],
-      "acc_accountants":[{"id":<accountant id>, "name":<string of accountant name>, "description":<description of accountant>, "parent_id":[<ledger accounting accountant category id of parent category>, ...], "pubkey":<accountant pubkey>}, {...}, ...],
+      "acc_accountants":[{"id":<accountant id>, "name":<string of accountant name>, "description":<description of accountant>, "parent_id":[<ledger accounting accountant category id of parent category>, ...], "pubkey":[<accountant pubkey>, ...]}, {...}, ...],
       "acc_rule_categories":[{"id":<ledger accounting rule category id>, "name":<string of ledger accounting rule category name>, "description":<description of ledger accounting rule category>, "parent_id":[<ledger accounting rule category id of parent category>, ...]}, {...}, ...],
       "acc_rules":[{"id":<ledger accounting rule id>, "name":<string of ledger accounting rule name>, "description":<description of ledger accounting rule>, "parent_id":[<ledger accounting rule category id of parent category>, ...], "rule":[<tbd, sth where you could specify, e.g. accountant or accountant role xy can just book on accounts yz, etc.>,...]}, {...}, ...],
       <more individually needed Data could be included (e.g. add new data element: "xy":<zz>,)>,
