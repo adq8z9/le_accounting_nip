@@ -78,9 +78,6 @@ When updated backwards compatibility has to be ensured by the issuer.
 }
 ~~~
 
-The following fields are introduced and used as described in the "content"-field:  
-`"name"`, `"description"`, `"acc_units"`, `"acc_account_categories"`, `"acc_accounts"`, `"acc_mvt_type_categories"`, `"acc_mvt_types"`, `"acc_partner_categories"`, `"acc_partners"`, `"acc_accountant_categories"`, `"acc_accountants"`, `"acc_rule_categories"`, `"acc_rules"`. 
-
 ## Accounting ledger entry
 
 This describe the structure for a debit-credit-ledger-entry.  
