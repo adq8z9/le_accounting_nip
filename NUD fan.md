@@ -129,9 +129,6 @@ The structure ensures that debit and credits equal, if valid 'debit_account' and
 
 The movement-flow of the transfer can be normally interpreted as going from the 'credit_account' (negative entry) to the 'debit_account' (positive entry) account.  
 
-The following fields are used as described in the "content"-field:  
-`"debit_account"`, `"credit_account"`, `"acc_amount"`, `"mvt_type"`, `"acc_partner"`, `"description"`. 
-
 ## Accounting report
 
 Represents an accounting report based on the accounting data events from above.
