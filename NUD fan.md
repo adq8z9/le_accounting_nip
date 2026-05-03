@@ -143,22 +143,26 @@ A accounting report event could be timestamped and covered by an attestation eve
   "created_at": <unix timestamp in seconds>,
   "kind": 7702, // as defined in NIP-01 a regular kind-number is used for this event-type
   "tags": [
-      ["name", <name of accounting report>],
-      ["description", <optional further description of the accounting report>],
-      ["A", <reference to adressable accounting ledger event (kind 37701), for which is reported>],
-      // remark for this namespace labels: with it, in the future, the kind number could be potentially used for additional 'ledger-report-events' if needed.
-      ["L", "nostr.leaccountingnip"],
-      ["l", "report", "nostr.leaccountingnip"],
-      //report file
-      ["IMETA", <imeta tag according to NIP-92>, "report"], // or
-      ["E", <reference to a kind 1063 media event according to NIP-94>, "report"],
-      //optional backup files references with which the report should be reproducable/auditable
-      ["x", <hash of used data with which report is reproproducable>, "data"], // or
-      ["imeta", <imeta tag according to NIP-92>, "data"], // or
-      ["e", <reference to a kind 1063 media event according to NIP-94 which could be published public or kept private>, "data"],
-      //... plus maybe further useful tags as used in other NIPs/NUDs if fitting
+    ["A", <reference to adressable accounting ledger event (kind 37701), for which is reported>],
+    // remark for this namespace labels: with it, in the future, the kind number could be potentially used for additional 'ledger-report-events' if needed.
+    ["L", "leaccountingnip"],
+    ["l", "report", "leaccountingnip"],
+    //report file
+    ["IMETA", <imeta tag according to NIP-92>, "report"], // or
+    ["E", <reference to a kind 1063 media event according to NIP-94>, "report"],
+    //optional backup files references with which the report should be reproducable/auditable
+    ["x", <hash of used data with which report is reproproducable>, "data"], // or
+    ["imeta", <imeta tag according to NIP-92>, "data"], // or
+    ["e", <reference to a kind 1063 media event according to NIP-94 which could be published public or kept private>, "data"],
+    //... plus maybe further useful tags as used in other NIPs/NUDs if fitting
   ],
-  "content": <tringified JSON object with more data if needed>
+  "content":"{
+    "name": <name of accounting report>,
+    "description": <optional further description of the accounting report>,
+    "ledger":<ledger-adress-reference for report>,
+    "parameter":[{ "<field from kind 7701-event>": <value> }, ...], // e.g. "created_at":">xy"
+    "events":[<array of event ids that are included in the report>],
+  }",
   "sig": <64-bytes lowercase hex of the signature of the sha256 hash of the serialized event data, which is the same as the "id" field>
 }
 ~~~
